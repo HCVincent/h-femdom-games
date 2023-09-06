@@ -7,7 +7,7 @@ type TagsCardListProps = {
 
 const TagsCardList: React.FC<TagsCardListProps> = ({ tags }) => {
   return (
-    <div className="flex flex-wrap max-h-30 overflow-hidden">
+    <div className="flex flex-wrap max-h-[8rem] overflow-hidden">
       {tags.map((tag) => (
         <TagCard tag={tag} key={tag}></TagCard>
       ))}

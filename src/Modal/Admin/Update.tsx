@@ -40,6 +40,7 @@ const Update: React.FC<GameItemProps> = ({ game }) => {
       description: game.body,
       address: game.address,
     });
+    if (game.tags) setTags(game.tags);
     if (game.coverImage) setSelectedImage(game.coverImage);
     if (game.video) setSelectedVideo(game.video);
     if (game.imagesGroup) setSelectedImagesGroup(game.imagesGroup);

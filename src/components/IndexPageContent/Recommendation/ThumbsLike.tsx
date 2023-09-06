@@ -1,6 +1,8 @@
 import { Game } from "@/atoms/gamesAtom";
 import React, { useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { BsDownload } from "react-icons/bs";
+import Link from "next/link";
 
 type ThumbsLikeProps = {
   userVoteValue?: number;
@@ -131,6 +133,13 @@ const ThumbsLike: React.FC<ThumbsLikeProps> = ({
           />
         )}
       </button>
+      {game.address && (
+        <div className="flex justify-center items-center w-12 h-12">
+          <Link href={game.address}>
+            <BsDownload className="w-12 h-12"></BsDownload>
+          </Link>
+        </div>
+      )}
     </div>
   );
 };
