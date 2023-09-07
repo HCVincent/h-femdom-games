@@ -1,7 +1,5 @@
-import Footer from "@/components/Footer/Footer";
 import GamesGridList from "@/components/GamesLists/GamesGridList/GamesGridList";
 import RecommendationLists from "@/components/IndexPageContent/Recommendation/RecommendationLists";
-import Layout from "@/components/Layout/Layout";
 import React from "react";
 
 const Home: React.FC = () => {
