@@ -39,6 +39,7 @@ const Update: React.FC<GameItemProps> = ({ game }) => {
       title: game.title,
       description: game.body,
       address: game.address,
+      password: game.password,
     });
     if (game.tags) setTags(game.tags);
     if (game.coverImage) setSelectedImage(game.coverImage);
@@ -50,6 +51,7 @@ const Update: React.FC<GameItemProps> = ({ game }) => {
     title: game.title,
     description: game.body,
     address: game.address,
+    password: game.password,
   });
   const handleShowComplete = () => {
     setAddComplete(true);
@@ -74,7 +76,9 @@ const Update: React.FC<GameItemProps> = ({ game }) => {
       video: selectedVideo,
       imagesGroup: selectedImagesGroup,
       tags: tags,
+      password: textInputs.password,
     };
+    console.log("newGame.psw", newGame.password);
 
     setLoading(true);
     try {
@@ -130,6 +134,13 @@ const Update: React.FC<GameItemProps> = ({ game }) => {
           className="input input-bordered"
           onChange={onChange}
           value={textInputs.address || ""}
+        />
+        <input
+          name="password"
+          placeholder="password"
+          className="input input-bordered"
+          onChange={onChange}
+          value={textInputs.password || ""}
         />
       </div>
       <div className="form-control">

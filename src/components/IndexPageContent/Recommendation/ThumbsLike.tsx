@@ -134,8 +134,14 @@ const ThumbsLike: React.FC<ThumbsLikeProps> = ({
         )}
       </button>
       {game.address && (
-        <div className="flex justify-center items-center w-12 h-12">
-          <Link href={game.address}>
+        <div className="flex justify-center items-center ">
+          <Link
+            href={game.address}
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+            className="w-12 h-12 hover:scale-105"
+          >
             <BsDownload className="w-12 h-12"></BsDownload>
           </Link>
         </div>

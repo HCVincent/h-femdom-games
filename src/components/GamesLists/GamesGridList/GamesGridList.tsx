@@ -78,7 +78,7 @@ const GamesGridList: React.FC<GamesGridListProps> = () => {
         </div>
       ) : (
         <div className="flex flex-col items-center h-full justify-between mt-10">
-          <div className="flex flex-col items-center h-full justify-between lg:grid lg:grid-cols-3 lg:gap-10">
+          <div className="flex flex-col items-center h-full justify-between gap-y-6 lg:grid lg:grid-cols-3 lg:gap-10">
             {gameStateValue.games.map((game) => (
               <GamesGridItem
                 key={game.id}
