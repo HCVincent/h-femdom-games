@@ -15,22 +15,26 @@ const GameDetailItem: React.FC<GameDetailItemProps> = ({ game, user }) => {
   return (
     <div className="flex flex-col">
       <GameCover coverImage={game.coverImage} imagesGroup={game.imagesGroup} />
-      <div className="flex mt-10 items-center justify-between">
-        <span className=" text-6xl font-bold capitalize">{game.title}</span>
-        <ThumbsLike
-          userVoteValue={
-            gameStateValue.gameVotes.find((vote) => vote.gameId === game.id)
-              ?.voteValue
-          }
-          game={game}
-          userCollectionValue={
-            gameStateValue.gameCollections.find(
-              (collection) => collection.gameId === game.id
-            )?.gameId
-          }
-          onCollect={onCollect}
-          onVote={onVote}
-        />
+      <div className="flex flex-col mt-10  justify-between">
+        <span className=" text-4xl font-bold capitalize lg:text-6xl">
+          {game.title}
+        </span>
+        <div className="w-[40rem]">
+          <ThumbsLike
+            userVoteValue={
+              gameStateValue.gameVotes.find((vote) => vote.gameId === game.id)
+                ?.voteValue
+            }
+            game={game}
+            userCollectionValue={
+              gameStateValue.gameCollections.find(
+                (collection) => collection.gameId === game.id
+              )?.gameId
+            }
+            onCollect={onCollect}
+            onVote={onVote}
+          />
+        </div>
       </div>
 
       {game.createdAt && (
