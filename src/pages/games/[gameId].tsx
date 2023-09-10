@@ -6,9 +6,12 @@ import { auth, firestore } from "@/firebase/clientApp";
 import useGames from "@/hooks/useGames";
 import { User } from "@firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import girls1 from "../../../public/girls/1.png";
+
 declare global {
   interface Window {
     adsbyjuicy: {
@@ -84,10 +87,26 @@ const GamePage: React.FC = () => {
           )}
         </div>
         <div className=" w-full  lg:flex lg:flex-col p-10 ml-10">
-          <div
-            id="adsContainerImg"
-            className="flex justify-center items-center z-0"
-          ></div>
+          <div className="relative h-[50rem]">
+            <Image
+              alt=""
+              src={girls1}
+              width={500}
+              height={500}
+              className="absolute z-1 top-0"
+            />
+            <div className="chat chat-start absolute right-0 z-0">
+              <div className="chat-bubble w-[12rem]">
+                {`Hi there, adorable puppy! 🐶 Would you be kind as to click on
+                ads for me? I just know you'd love to, wouldn't you? 😊`}
+              </div>
+            </div>
+            <div
+              id="adsContainerImg"
+              className="absolute  z-2  m-auto left-0 top-0 right-0 bottom-0 w-[158px] h-[180px]"
+            ></div>
+          </div>
+
           {game && game.tags && (
             <RelatedGames
               gameTag={game.tags[Math.floor(Math.random() * game.tags.length)]}
