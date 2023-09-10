@@ -55,7 +55,7 @@ const GamesGridItem: React.FC<GamesGridItemProps> = ({
             />
           </figure>
           <div className="card-body cursor-pointer flex flex-col h-48 m-0 p-2">
-            <h2 className="card-title  text-xl justify-start top-0 align-top items-start capitalize line-clamp-2 h-[2rem]">
+            <h2 className="card-title  text-xl justify-start top-0 align-top items-start capitalize line-clamp-2">
               {game.title.charAt(0).toUpperCase() + game.title.slice(1)}{" "}
             </h2>
             <span className="flex text-slate-500 text-sm">

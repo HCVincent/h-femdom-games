@@ -2,22 +2,21 @@ import React, { useState, useCallback, useEffect } from "react";
 import useEmblaCarousel, { EmblaOptionsType } from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { Game } from "@/atoms/gamesAtom";
-import RecommendationItem from "./RecommendationItem";
 import useGames from "@/hooks/useGames";
-import { Thumb } from "./EmblaCarouselThumbsButton";
+import { useRouter } from "next/router";
 
 type PropType = {
-  slides: Game[];
+  slides: number[];
   options?: EmblaOptionsType;
 };
 
-const EmblaCarousel: React.FC<PropType> = (props) => {
+const EmblaCarouselTags: React.FC<PropType> = (props) => {
   const { onSelectGame, gameStateValue, onVote, onCollect } = useGames();
   const { slides, options } = props;
   const [emblaMainRef, emblaMainApi] = useEmblaCarousel(options, [
     Autoplay({ stopOnInteraction: false }),
   ]);
-
+  const router = useRouter();
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [emblaThumbsRef, emblaThumbsApi] = useEmblaCarousel({
     containScroll: "keepSnaps",
@@ -42,49 +41,45 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
     emblaMainApi.on("select", onSelect);
     emblaMainApi.on("reInit", onSelect);
   }, [emblaMainApi, onSelect]);
+  const images: string[] = [
+    "succubus",
+    "animated",
+    "english",
+    "MILF",
+    "Reverse Rape",
+    "Senior",
+    "2d",
+    "Foot Job",
+  ];
 
+  const imageByIndex = (index: number): string => images[index % images.length];
   return (
-    <div className="embla hover:scale-105 transition-all">
+    <div className="embla">
       <div className="embla__viewport" ref={emblaMainRef}>
         <div className="embla__container">
-          {slides.map((game, index) => (
-            <RecommendationItem
-              key={game.id}
-              game={game}
-              index={index}
-              onSelectGame={onSelectGame}
-              onVote={onVote}
-              onCollect={onCollect}
-              userVoteValue={
-                gameStateValue.gameVotes.find((vote) => vote.gameId === game.id)
-                  ?.voteValue
-              }
-              userCollectionValue={
-                gameStateValue.gameCollections.find(
-                  (collection) => collection.gameId === game.id
-                )?.gameId
-              }
-            />
-          ))}
-        </div>
-        <div className="embla-thumbs flex h-20 lg:h-30 w-full">
-          <div className="embla-thumbs__viewport w-full" ref={emblaThumbsRef}>
-            <div className="embla-thumbs__container flex w-full">
-              {slides.map((game, index) => (
-                <Thumb
-                  onClick={() => onThumbClick(index)}
-                  selected={index === selectedIndex}
-                  index={index}
-                  imgSrc={game.coverImage!}
-                  key={index}
-                />
-              ))}
+          {slides.map((string, index) => (
+            <div className="" key={index}>
+              <div className="embla__slide">
+                <div className="card w-96 bg-base-100 shadow-xl hover:scale-105 transition-all">
+                  <div className="card-body">
+                    <h2
+                      className="card-title items-center justify-center capitalize text-2xl cursor-pointer"
+                      onClick={() => {
+                        const tag = imageByIndex(string);
+                        router.push(`/tags/${tag}`);
+                      }}
+                    >
+                      {imageByIndex(string)}
+                    </h2>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
   );
 };
 
-export default EmblaCarousel;
+export default EmblaCarouselTags;

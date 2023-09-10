@@ -185,7 +185,7 @@ const Add: React.FC<AddProps> = () => {
           value={textInputs.address}
         />{" "}
         <input
-          name="unzipPassword"
+          name="password"
           placeholder="password"
           className="input input-bordered"
           onChange={onChange}
@@ -214,6 +214,7 @@ const Add: React.FC<AddProps> = () => {
         gameTags={gameStateValue.gameTags}
         setTags={setTags}
         tags={tags}
+        currentGameTags={[]}
       />
       {addComplete && (
         <div className="alert alert-success">

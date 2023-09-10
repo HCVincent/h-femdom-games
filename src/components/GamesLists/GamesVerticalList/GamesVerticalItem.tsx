@@ -4,15 +4,22 @@ import React, { useState } from "react";
 import questionmark from "../../../../public/questionmark.png";
 import Image from "next/image";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
+import ThumbsLike from "@/components/IndexPageContent/Recommendation/ThumbsLike";
 
 type GamesVerticalItemProps = {
   game: Game;
+  userVoteValue?: number;
   userCollectionValue?: string;
   onCollect: (
     event: React.MouseEvent<SVGElement, MouseEvent>,
     post: Game
   ) => Promise<boolean>;
   onSelectGame: (game: Game) => void;
+  onVote: (
+    event: React.MouseEvent<SVGElement, MouseEvent>,
+    post: Game,
+    vote: number
+  ) => Promise<boolean>;
 };
 
 const GamesVerticalItem: React.FC<GamesVerticalItemProps> = ({
@@ -20,6 +27,8 @@ const GamesVerticalItem: React.FC<GamesVerticalItemProps> = ({
   userCollectionValue,
   onCollect,
   onSelectGame,
+  onVote,
+  userVoteValue,
 }) => {
   const [imageLoading, setImageLoading] = useState(true);
   const [like, setLike] = useState(false);
@@ -55,25 +64,13 @@ const GamesVerticalItem: React.FC<GamesVerticalItemProps> = ({
             ).fromNow()}`}
         </p>
         <div className="card-actions justify-end">
-          <button
-            className="flex text-white w-12 h-12 transition-all hover:scale-105"
-            onClick={(e) => {
-              e.stopPropagation();
-              setLike(!like);
-            }}
-          >
-            {userCollectionValue === game.id ? (
-              <FaHeart
-                className="w-12 h-12 items-end"
-                onClick={(e) => onCollect(e, game)}
-              />
-            ) : (
-              <FaRegHeart
-                className="w-12 h-12"
-                onClick={(e) => onCollect(e, game)}
-              />
-            )}
-          </button>
+          <ThumbsLike
+            userVoteValue={userVoteValue}
+            game={game}
+            userCollectionValue={userCollectionValue}
+            onCollect={onCollect}
+            onVote={onVote}
+          />
         </div>
       </div>
     </div>

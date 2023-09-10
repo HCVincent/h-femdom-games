@@ -106,7 +106,7 @@ const ThumbsLike: React.FC<ThumbsLikeProps> = ({
         )}
       </div>
       <button
-        className="flex  text-white justify-end items-end transition-all hover:scale-110"
+        className="flex  text-white justify-end items-end transition-all hover:scale-110 mr-2"
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
