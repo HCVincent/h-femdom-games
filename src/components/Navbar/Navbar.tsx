@@ -73,7 +73,7 @@ const Navbar: React.FC<NavbarProps> = () => {
   }, [user]);
   return (
     <div className="navbar max-h-16 bg-base-200 justify-center p-0 ">
-      <div className="flex w-full align-middle items-center  lg:justify-between">
+      <div className="flex w-5/6 align-middle items-center  lg:justify-between">
         <div className="">
           <div className="drawer lg:hidden">
             <input id="my-drawer" type="checkbox" className="drawer-toggle" />

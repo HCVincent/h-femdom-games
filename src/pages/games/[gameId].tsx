@@ -1,6 +1,7 @@
 import { Game } from "@/atoms/gamesAtom";
 import GameDetailItem from "@/components/GamesDetailItem/GameDetailItem";
 import PageContent from "@/components/Layout/PageContent";
+import RelatedGames from "@/components/RelatedGames/RelatedGames";
 import { auth, firestore } from "@/firebase/clientApp";
 import useGames from "@/hooks/useGames";
 import { User } from "@firebase/auth";
@@ -49,7 +50,13 @@ const GamePage: React.FC = () => {
             />
           )}
         </div>
-        <div className="flex w-full "></div>
+        <div className=" w-full hidden lg:flex">
+          {game && game.tags && (
+            <RelatedGames
+              gameTag={game.tags[Math.floor(Math.random() * game.tags.length)]}
+            />
+          )}
+        </div>
       </PageContent>
     </div>
   );

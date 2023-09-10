@@ -30,7 +30,7 @@ const GamesGridList: React.FC<GamesGridListProps> = () => {
   const handleOnReadGames = async () => {
     setLoading(true);
     try {
-      await readGames("games", undefined, 15);
+      await readGames("games", undefined, 9);
     } catch (error) {
       console.log("handleOnReadGames error", error);
     }

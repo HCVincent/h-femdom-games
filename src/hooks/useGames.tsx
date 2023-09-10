@@ -58,13 +58,20 @@ const useGames = () => {
     }
   };
 
-  const readGamesByTag = async (tag: string) => {
+  const readGamesByTag = async (tag: string, limitedNum?: number) => {
     try {
-      const gameQuery = query(
-        collection(firestore, "games"),
-        orderBy("updatedAt", "desc"),
-        where("tags", "array-contains", tag)
-      );
+      const gameQuery = limitedNum
+        ? query(
+            collection(firestore, "games"),
+            orderBy("updatedAt", "desc"),
+            where("tags", "array-contains", tag),
+            limit(limitedNum)
+          )
+        : query(
+            collection(firestore, "games"),
+            orderBy("updatedAt", "desc"),
+            where("tags", "array-contains", tag)
+          );
       const gameDocs = await getDocs(gameQuery);
       const games = gameDocs.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
       setGameStateValue((prev) => ({
