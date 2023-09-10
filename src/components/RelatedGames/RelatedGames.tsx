@@ -24,27 +24,29 @@ const RelatedGames: React.FC<RelatedGamesProps> = ({ gameTag }) => {
     handleOnReadGames();
   }, []);
   return (
-    <div className="flex flex-col ">
+    <div className="flex flex-col justify-center items-center">
       <span className="text-4xl font-bold">More Games</span>
-      {gameStateValue.gamesInTag.map((game) => (
-        <div
-          className="card card-compact w-96 bg-base-100 shadow-xl my-5 cursor-pointer hover:scale-105 transition-all"
-          key={game.id}
-          onClick={() => router.push(`/games/${game.id}`)}
-        >
-          <figure>
-            <Image
-              width={500}
-              height={300}
-              src={game.coverImage ? game.coverImage : default_cover}
-              alt={game.title}
-            />
-          </figure>
-          <div className="card-body">
-            <h2 className="card-title capitalize">{game.title}</h2>
+      <div className="flex flex-col justify-center items-center">
+        {gameStateValue.gamesInTag.map((game) => (
+          <div
+            className="card card-compact w-96 bg-base-100 shadow-xl my-5 cursor-pointer hover:scale-105 transition-all"
+            key={game.id}
+            onClick={() => router.push(`/games/${game.id}`)}
+          >
+            <figure>
+              <Image
+                width={500}
+                height={300}
+                src={game.coverImage ? game.coverImage : default_cover}
+                alt={game.title}
+              />
+            </figure>
+            <div className="card-body">
+              <h2 className="card-title capitalize">{game.title}</h2>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };
