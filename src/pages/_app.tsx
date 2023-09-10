@@ -29,7 +29,7 @@ export default function App({ Component, pageProps }: AppProps) {
 export async function getServerSideProps({ req, res }) {
   res.setHeader(
     "Cache-Control",
-    "public, s-maxage=30, stale-while-revalidate=59"
+    "public, s-maxage=60, stale-while-revalidate=59"
   );
 
   return {
