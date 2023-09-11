@@ -17,9 +17,11 @@ export default function App({ Component, pageProps }: AppProps) {
         />
       </Head>
       <RecoilRoot>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <div className="min-w-[450px]">
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </div>
       </RecoilRoot>
     </>
   );

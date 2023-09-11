@@ -13,7 +13,7 @@ type GameDetailItemProps = { game: Game; user: User };
 const GameDetailItem: React.FC<GameDetailItemProps> = ({ game, user }) => {
   const { onSelectGame, gameStateValue, onVote, onCollect } = useGames();
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col  p-10">
       <GameCover coverImage={game.coverImage} imagesGroup={game.imagesGroup} />
       <div className="flex flex-col mt-10  justify-between">
         <span className=" text-4xl font-bold capitalize lg:text-6xl">

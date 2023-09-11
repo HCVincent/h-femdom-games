@@ -58,7 +58,7 @@ const RecommendationItem: React.FC<RecommendationItemProps> = ({
 
       <div className="flex flex-1 h-full items-center justify-between px-8">
         <div className="flex items-end p-2">
-          <span className="text-xl  text-white  line-clamp-2 lg:line-clamp-1 lg:text-4xl capitalize">
+          <span className="text-2xl  text-white  line-clamp-2 lg:line-clamp-1 lg:text-4xl capitalize">
             {game.title}
           </span>
           <span className="ml-2 text-slate-500 hidden lg:flex">
@@ -67,7 +67,7 @@ const RecommendationItem: React.FC<RecommendationItemProps> = ({
               moment(new Date(game.createdAt.seconds * 1000)).fromNow()}
           </span>
         </div>
-        <div className="flex flex-col flex-0 min-w-[20rem] ">
+        <div className="flex-col flex-0 min-w-[20rem] hidden lg:flex">
           <ThumbsLike
             userVoteValue={userVoteValue}
             game={game}

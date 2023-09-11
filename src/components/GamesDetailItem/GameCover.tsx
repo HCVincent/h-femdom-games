@@ -28,7 +28,7 @@ const GameCover: React.FC<GameCoverProps> = ({ coverImage, imagesGroup }) => {
   return (
     <div>
       {imagesGroup && imagesGroup.length > 0 ? (
-        <div className="embla   p-0 mt-10">
+        <div className="embla   p-0 ">
           <div className="embla__viewport" ref={emblaRef}>
             <div className="embla__container">
               {imagesGroup.map((image, index) => (
