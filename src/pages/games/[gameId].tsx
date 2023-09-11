@@ -110,6 +110,7 @@ const GamePage: React.FC = () => {
           {game && game.tags && (
             <RelatedGames
               gameTag={game.tags[Math.floor(Math.random() * game.tags.length)]}
+              gameId={game.id!}
             />
           )}
         </div>

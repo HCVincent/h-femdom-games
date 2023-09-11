@@ -26,6 +26,7 @@ import {
   or,
   arrayUnion,
   arrayRemove,
+  startAfter,
 } from "firebase/firestore";
 import {
   deleteObject,
@@ -58,7 +59,11 @@ const useGames = () => {
     }
   };
 
-  const readGamesByTag = async (tag: string, limitedNum?: number) => {
+  const readGamesByTag = async (
+    tag: string,
+    limitedNum?: number,
+    gameId?: string
+  ) => {
     try {
       const gameQuery = limitedNum
         ? query(
@@ -73,7 +78,12 @@ const useGames = () => {
             where("tags", "array-contains", tag)
           );
       const gameDocs = await getDocs(gameQuery);
-      const games = gameDocs.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      let games = gameDocs.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      if (gameId) {
+        games = games.filter((game) => {
+          return game.id !== gameId; // Return true for the games you want to keep
+        });
+      }
       setGameStateValue((prev) => ({
         ...prev,
         gamesInTag: games as Game[],

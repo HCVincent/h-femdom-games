@@ -105,7 +105,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                   {/* Sidebar content here */}
                   <li>
                     <button
-                      className="hidden lg:flex lg:text-4xl  btn btn-ghost"
+                      className="flex lg:text-4xl  btn btn-ghost justify-start"
                       onClick={() => router.push("/")}
                     >
                       <div className="flex w-auto h-10">
@@ -114,7 +114,9 @@ const Navbar: React.FC<NavbarProps> = () => {
                           alt="home"
                           className="w-full h-full"
                         ></Image>
-                        <span className="normal-case">Home</span>
+                        <span className="flex normal-case items-center justify-center ml-4 text-4xl">
+                          Home
+                        </span>
                       </div>
                     </button>
                   </li>
@@ -129,7 +131,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                     )}
                   </li>
                 </ul>
-                <div className="flex flex-col">
+                <div className="flex flex-col mb-10 text-4xl">
                   <ThemeButton toggleTheme={toggleTheme} theme={theme} />
                   {isLogin ? (
                     <SignOut />

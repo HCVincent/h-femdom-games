@@ -8,14 +8,15 @@ import { useRouter } from "next/router";
 
 type RelatedGamesProps = {
   gameTag: string;
+  gameId: string;
 };
 
-const RelatedGames: React.FC<RelatedGamesProps> = ({ gameTag }) => {
+const RelatedGames: React.FC<RelatedGamesProps> = ({ gameTag, gameId }) => {
   const { readGamesByTag, gameStateValue } = useGames();
   const router = useRouter();
   const handleOnReadGames = async () => {
     try {
-      await readGamesByTag(gameTag, 3);
+      await readGamesByTag(gameTag, 4, gameId);
     } catch (error) {
       console.log("handleOnReadGames error", error);
     }
