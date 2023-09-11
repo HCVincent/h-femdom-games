@@ -46,7 +46,7 @@ const GameCover: React.FC<GameCoverProps> = ({ coverImage, imagesGroup }) => {
             </div>
           </div>
           {isViewerOpen && (
-            <div className="z-50">
+            <div className="relative z-50">
               <ImageViewer
                 src={imagesGroup}
                 currentIndex={currentImage}

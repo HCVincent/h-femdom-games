@@ -87,7 +87,7 @@ const GamePage: React.FC = () => {
           )}
         </div>
         <div className=" w-full  lg:flex lg:flex-col pl-5">
-          <div className="relative h-[50rem]">
+          <div className="relative h-[50rem] z-10">
             <Image
               alt=""
               src={girls1}
@@ -95,7 +95,7 @@ const GamePage: React.FC = () => {
               height={500}
               className="absolute z-1 top-0"
             />
-            <div className="chat chat-start absolute right-0 z-50">
+            <div className="chat chat-start absolute right-0 ">
               <div className="chat-bubble w-[12rem]">
                 {`Hi there, adorable puppy! 🐶 Would you be kind as to click on
                 ads for me? I just know you'd love to, wouldn't you? 😊`}
@@ -103,7 +103,7 @@ const GamePage: React.FC = () => {
             </div>
             <div
               id="adsContainerImg"
-              className="absolute  z-2  m-auto left-0 top-0 right-0 bottom-0 w-[158px] h-[180px]"
+              className="absolute m-auto z-10 left-0 top-0 right-0 bottom-0 w-[158px] h-[180px]"
             ></div>
           </div>
 

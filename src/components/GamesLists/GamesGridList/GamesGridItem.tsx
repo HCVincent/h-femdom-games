@@ -3,7 +3,6 @@ import moment from "moment";
 import React, { useState } from "react";
 import questionmark from "../../../../public/questionmark.png";
 import Image from "next/image";
-import { FaRegHeart, FaHeart } from "react-icons/fa";
 import ThumbsLike from "@/components/IndexPageContent/Recommendation/ThumbsLike";
 import Link from "next/link";
 import TagsCardList from "@/components/Tags/TagsCardList";
@@ -33,13 +32,12 @@ const GamesGridItem: React.FC<GamesGridItemProps> = ({
   onVote,
 }) => {
   const [imageLoading, setImageLoading] = useState(true);
-  const [like, setLike] = useState(false);
 
   return (
     <div className="flex w-[28rem]">
       <Link href={`/games/${game.id}`}>
         <div className="card  bg-base-100 shadow-xl h-[34rem]  hover:scale-105 transition-all ">
-          <figure className="h-40 w-full items-start">
+          <figure className="h-52 w-full items-start">
             {imageLoading && (
               <div className="flex w-full h-full items-center justify-center">
                 <span className="loading loading-spinner loading-lg"></span>
@@ -48,7 +46,7 @@ const GamesGridItem: React.FC<GamesGridItemProps> = ({
             <Image
               src={game.coverImage ? game.coverImage : questionmark.src}
               alt={"cover"}
-              className="w-full h-40 object-cover  rounded-lg cursor-pointer"
+              className="w-full h-52 object-cover  rounded-lg cursor-pointer"
               width={500}
               height={500}
               onLoad={() => setImageLoading(false)}
