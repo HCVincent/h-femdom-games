@@ -86,7 +86,7 @@ const GamePage: React.FC = () => {
             />
           )}
         </div>
-        <div className=" w-full  lg:flex lg:flex-col p-10 ml-10">
+        <div className=" w-full  lg:flex lg:flex-col pl-5">
           <div className="relative h-[50rem]">
             <Image
               alt=""

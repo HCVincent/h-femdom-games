@@ -24,7 +24,7 @@ const RelatedGames: React.FC<RelatedGamesProps> = ({ gameTag }) => {
     handleOnReadGames();
   }, []);
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center mt-10">
       <span className="text-4xl font-bold">More Games</span>
       <div className="flex flex-col justify-center items-center">
         {gameStateValue.gamesInTag.map((game) => (

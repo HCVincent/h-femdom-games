@@ -28,11 +28,17 @@ const RecommendationLists: React.FC<RecommendationListsProps> = () => {
   }, []);
 
   return (
-    <section className="sandbox__carousel">
-      <EmblaCarousel
-        slides={gameStateValue.gameRecommendations}
-        options={OPTIONS}
-      />
+    <section className="sandbox__carousel mt-10">
+      {loading ? (
+        <div className="flex justify-center items-center ">
+          <span className="loading loading-spinner w-[20rem] h-[20rem]"></span>
+        </div>
+      ) : (
+        <EmblaCarousel
+          slides={gameStateValue.gameRecommendations}
+          options={OPTIONS}
+        />
+      )}
     </section>
   );
 };

@@ -39,14 +39,15 @@ const GamesGridList: React.FC<GamesGridListProps> = () => {
   const loadMore = async () => {
     setLoadMoreLoading(true);
     // Construct a new query starting at this document,
+    const limitedNumber = 9;
     next = query(
       collection(firestore, "games"),
       orderBy("updatedAt", "desc"),
       startAfter(lastVisible),
-      limit(15)
+      limit(limitedNumber)
     );
     const newGameDocs = await getDocs(next);
-    if (newGameDocs.docs.length < 15) {
+    if (newGameDocs.docs.length < limitedNumber) {
       setNoMoreLoad(true);
     }
     const games = newGameDocs.docs.map((doc) => ({
@@ -122,14 +123,14 @@ const GamesGridList: React.FC<GamesGridListProps> = () => {
                 <span>this is a bottom line</span>
               </div>
             ) : (
-              <div className="flex w-full h-50 justify-center">
+              <div className="flex w-full h-[6rem] justify-center">
                 {loadMoreLoading ? (
                   <div className="flex w-full h-full items-center justify-center">
                     <span className="loading loading-spinner loading-lg"></span>
                   </div>
                 ) : (
                   <button
-                    className="btn btn-ghost mt-4 w-full h-full normal-case"
+                    className="btn btn-ghost mt-4 w-full h-full normal-case text-4xl"
                     onClick={loadMore}
                   >
                     Load More

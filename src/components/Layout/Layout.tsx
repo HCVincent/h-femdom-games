@@ -61,7 +61,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       /> */}
 
       <main className="flex justify-center w-full">{children}</main>
-      <div id="adsContainer" className="flex justify-center items-center"></div>
+      <div
+        id="adsContainer"
+        className="flex justify-center items-center mt-4"
+      ></div>
       <Footer />
     </div>
   );
