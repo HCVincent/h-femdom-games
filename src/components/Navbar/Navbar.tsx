@@ -72,7 +72,7 @@ const Navbar: React.FC<NavbarProps> = () => {
     }
   }, [user]);
   return (
-    <div className="navbar max-h-16 bg-base-200 justify-center p-0 ">
+    <div className="navbar max-h-16 bg-base-200 justify-center p-0 z-50">
       <div className="flex w-5/6 align-middle items-center  lg:justify-between">
         <div className="">
           <div className="drawer lg:hidden">

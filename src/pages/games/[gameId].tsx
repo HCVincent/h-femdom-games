@@ -95,7 +95,7 @@ const GamePage: React.FC = () => {
               height={500}
               className="absolute z-1 top-0"
             />
-            <div className="chat chat-start absolute right-0 z-0">
+            <div className="chat chat-start absolute right-0 z-50">
               <div className="chat-bubble w-[12rem]">
                 {`Hi there, adorable puppy! 🐶 Would you be kind as to click on
                 ads for me? I just know you'd love to, wouldn't you? 😊`}
