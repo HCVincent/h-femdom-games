@@ -58,10 +58,10 @@ const RecommendationItem: React.FC<RecommendationItemProps> = ({
 
       <div className="flex flex-1 h-full items-center justify-between px-8">
         <div className="flex items-end p-2">
-          <span className="text-xl  text-white max-w-2xl line-clamp-1 lg:text-4xl capitalize">
-            {game.title.charAt(0).toUpperCase() + game.title.slice(1)}
+          <span className="text-xl  text-white  line-clamp-2 lg:line-clamp-1 lg:text-4xl capitalize">
+            {game.title}
           </span>
-          <span className="ml-2 text-slate-500">
+          <span className="ml-2 text-slate-500 hidden lg:flex">
             updated at{" "}
             {game.createdAt &&
               moment(new Date(game.createdAt.seconds * 1000)).fromNow()}
