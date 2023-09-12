@@ -12,7 +12,7 @@ type RelatedGamesProps = {
 };
 
 const RelatedGames: React.FC<RelatedGamesProps> = ({ gameTag, gameId }) => {
-  const { readGamesByTag, gameStateValue } = useGames();
+  const { readGamesByTag, gameStateValue, onSelectGame } = useGames();
   const router = useRouter();
   const handleOnReadGames = async () => {
     try {
@@ -32,7 +32,7 @@ const RelatedGames: React.FC<RelatedGamesProps> = ({ gameTag, gameId }) => {
           <div
             className="card card-compact w-96 bg-base-100 shadow-xl my-5 cursor-pointer hover:scale-105 transition-all"
             key={game.id}
-            onClick={() => router.push(`/games/${game.id}`)}
+            onClick={() => onSelectGame(game)}
           >
             <figure>
               <Image

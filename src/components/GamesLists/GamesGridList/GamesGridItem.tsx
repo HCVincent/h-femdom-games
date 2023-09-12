@@ -2,7 +2,7 @@ import { Game } from "@/atoms/gamesAtom";
 import moment from "moment";
 import React, { useState } from "react";
 import questionmark from "../../../../public/questionmark.png";
-import Image from "next/image";
+import { Image } from "@chakra-ui/react";
 import ThumbsLike from "@/components/IndexPageContent/Recommendation/ThumbsLike";
 import Link from "next/link";
 import TagsCardList from "@/components/Tags/TagsCardList";
@@ -35,7 +35,7 @@ const GamesGridItem: React.FC<GamesGridItemProps> = ({
 
   return (
     <div className="flex w-[28rem]">
-      <Link href={`/games/${game.id}`}>
+      <div onClick={() => onSelectGame(game)}>
         <div className="card  bg-base-100 shadow-xl h-[34rem]  hover:scale-105 transition-all ">
           <figure className="h-52 w-full items-start">
             {imageLoading && (
@@ -46,9 +46,7 @@ const GamesGridItem: React.FC<GamesGridItemProps> = ({
             <Image
               src={game.coverImage ? game.coverImage : questionmark.src}
               alt={"cover"}
-              className="w-full h-52 object-cover  rounded-lg cursor-pointer"
-              width={500}
-              height={500}
+              className="w-full object-cover rounded-lg "
               onLoad={() => setImageLoading(false)}
             />
           </figure>
@@ -76,7 +74,7 @@ const GamesGridItem: React.FC<GamesGridItemProps> = ({
             />
           </div>
         </div>
-      </Link>
+      </div>
     </div>
   );
 };

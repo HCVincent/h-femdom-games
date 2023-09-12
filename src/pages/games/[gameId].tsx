@@ -1,6 +1,5 @@
 import { Game } from "@/atoms/gamesAtom";
 import GameDetailItem from "@/components/GamesDetailItem/GameDetailItem";
-import PageContent from "@/components/Layout/PageContent";
 import RelatedGames from "@/components/RelatedGames/RelatedGames";
 import { auth, firestore } from "@/firebase/clientApp";
 import useGames from "@/hooks/useGames";
@@ -8,9 +7,10 @@ import { User } from "@firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import React, { Suspense, lazy, useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import girls1 from "../../../public/girls/1.png";
+import PageContent from "@/components/Layout/PageContent";
 
 declare global {
   interface Window {
@@ -39,15 +39,11 @@ const GamePage: React.FC = () => {
   };
 
   useEffect(() => {
-    setGameStateValue((prev) => ({
-      ...prev,
-      selectedGame: null,
-    }));
     const { gameId } = router.query;
-    if (gameId) {
+    if (gameId && !gameStateValue.selectedGame) {
       fetchGame(gameId as string);
     }
-  }, [router.query]);
+  }, [router.query, gameStateValue.selectedGame]);
 
   useEffect(() => {
     // Get the ads container element

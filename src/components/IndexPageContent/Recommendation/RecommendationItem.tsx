@@ -40,21 +40,21 @@ const RecommendationItem: React.FC<RecommendationItemProps> = ({
       <div className="embla__slide__number">
         <span>{index + 1}</span>
       </div>
-      <Link href={`/games/${game.id}`}>
+      <div onClick={() => onSelectGame(game)}>
         <Image
           /* @ts-ignore */
           src={game.coverImage}
           priority={true}
           alt=""
-          width={0}
-          height={0}
+          width={500}
+          height={500}
           sizes="100vw"
           className="embla__slide__img flex object-cover w-full h-[480px] cursor-pointer"
           // onClick={() => {
           //   onSelectGame(game);
           // }}
         />
-      </Link>
+      </div>
 
       <div className="flex flex-1 h-full items-center justify-between px-8">
         <div className="flex items-end p-2">

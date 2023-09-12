@@ -25,7 +25,11 @@ const TagsCheckboxList: React.FC<TagsCheckboxListProps> = ({
             key={tag.id}
             setTags={setTags}
             tags={tags}
-            isChecked={currentGameTags?.includes(tag.id)}
+            isChecked={
+              currentGameTags && currentGameTags.length > 0
+                ? false
+                : currentGameTags?.includes(tag.id)
+            }
           ></TagCheckbox>
         ))}
       </div>

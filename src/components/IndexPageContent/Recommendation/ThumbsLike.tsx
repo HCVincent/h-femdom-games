@@ -136,7 +136,7 @@ const ThumbsLike: React.FC<ThumbsLikeProps> = ({
       {game.address && (
         <div className="flex justify-center items-center ">
           <Link
-            href={game.address}
+            href={{ pathname: `/downloadpage`, query: game.address }}
             onClick={(e) => {
               e.stopPropagation();
             }}
