@@ -1,10 +1,8 @@
 import { GameTag } from "@/atoms/gamesAtom";
 import useGames from "@/hooks/useGames";
 import React, { useEffect, useState } from "react";
-import GamesVerticalList from "../GamesLists/GamesVerticalList/GamesVerticalList";
 import Image from "next/image";
 import default_cover from "../../../public/default_cover.png";
-import { useRouter } from "next/router";
 
 type RelatedGamesProps = {
   gameTag: string;
@@ -13,7 +11,6 @@ type RelatedGamesProps = {
 
 const RelatedGames: React.FC<RelatedGamesProps> = ({ gameTag, gameId }) => {
   const { readGamesByTag, gameStateValue, onSelectGame } = useGames();
-  const router = useRouter();
   const handleOnReadGames = async () => {
     try {
       await readGamesByTag(gameTag, 4, gameId);

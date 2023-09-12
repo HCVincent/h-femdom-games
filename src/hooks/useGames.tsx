@@ -58,7 +58,13 @@ const useGames = () => {
       router.push(`/games/${game.id}`);
     }
   };
-
+  const onSelectDownload = (game: Game) => {
+    setGameStateValue((prev) => ({
+      ...prev,
+      selectedGame: game,
+    }));
+    router.push(`/downloads/${game.id}`);
+  };
   const readGamesByTag = async (
     tag: string,
     limitedNum?: number,
@@ -646,6 +652,7 @@ const useGames = () => {
     numOfGamesPerPage,
     onVote,
     onCollect,
+    onSelectDownload,
   };
 };
 export default useGames;

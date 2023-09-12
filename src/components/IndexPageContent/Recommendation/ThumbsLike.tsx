@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { BsDownload } from "react-icons/bs";
 import Link from "next/link";
+import useGames from "@/hooks/useGames";
 
 type ThumbsLikeProps = {
   userVoteValue?: number;
@@ -26,6 +27,7 @@ const ThumbsLike: React.FC<ThumbsLikeProps> = ({
   onCollect,
   onVote,
 }) => {
+  const { onSelectDownload } = useGames();
   const [error, setError] = useState(false);
   const [loadingDownVote, setLoadingDownVote] = useState(false);
   const [loadingUpVote, setLoadingUpVote] = useState(false);
@@ -135,15 +137,15 @@ const ThumbsLike: React.FC<ThumbsLikeProps> = ({
       </button>
       {game.address && (
         <div className="flex justify-center items-center ">
-          <Link
-            href={{ pathname: `/downloadpage`, query: game.address }}
+          <div
             onClick={(e) => {
               e.stopPropagation();
+              onSelectDownload(game);
             }}
             className="w-12 h-12 hover:scale-105"
           >
             <BsDownload className="w-12 h-12"></BsDownload>
-          </Link>
+          </div>
         </div>
       )}
     </div>
