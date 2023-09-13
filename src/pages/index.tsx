@@ -15,6 +15,7 @@ const Home: React.FC = () => {
     </div>
   );
 };
+export const revalidate = 3600;
 
 export async function getServerSideProps({
   req,
@@ -23,11 +24,12 @@ export async function getServerSideProps({
   req: NextApiRequest;
   res: NextApiResponse;
 }) {
+  console.log("before header", res.getHeaders());
   res.setHeader(
     "Cache-Control",
-    "public, max-age=300, s-maxage=600, stale-while-revalidate=59"
+    "public,s-maxage=600, stale-while-revalidate=59"
   );
-
+  console.log("after header", res.getHeaders());
   return {
     props: {},
   };

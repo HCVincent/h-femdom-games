@@ -12,6 +12,9 @@ const TagCard: React.FC<TagCardProps> = ({ tag }) => {
         <Link
           className="text-xl text-slate-400  w-auto m-0 btn capitalize"
           href={`/tags/${tag}`}
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
         >
           {tag}
         </Link>
