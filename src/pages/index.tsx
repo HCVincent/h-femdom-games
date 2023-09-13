@@ -2,6 +2,7 @@ import GamesGridList from "@/components/GamesLists/GamesGridList/GamesGridList";
 import RecommendationLists from "@/components/IndexPageContent/Recommendation/RecommendationLists";
 import TagsCategories from "@/components/IndexPageContent/TagsCategories.tsx/TagsCategories";
 import React from "react";
+import { NextApiRequest, NextApiResponse } from "next";
 
 const Home: React.FC = () => {
   return (
@@ -15,4 +16,20 @@ const Home: React.FC = () => {
   );
 };
 
+export async function getServerSideProps({
+  req,
+  res,
+}: {
+  req: NextApiRequest;
+  res: NextApiResponse;
+}) {
+  res.setHeader(
+    "Cache-Control",
+    "public, max-age=300, s-maxage=600, stale-while-revalidate=59"
+  );
+
+  return {
+    props: {},
+  };
+}
 export default Home;

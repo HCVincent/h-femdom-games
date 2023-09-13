@@ -26,15 +26,3 @@ export default function App({ Component, pageProps }: AppProps) {
     </>
   );
 }
-
-// @ts-ignore
-export async function getServerSideProps({ req, res }) {
-  res.setHeader(
-    "Cache-Control",
-    "public, s-maxage=60, stale-while-revalidate=59"
-  );
-
-  return {
-    props: {},
-  };
-}

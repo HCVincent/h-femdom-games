@@ -98,7 +98,7 @@ const DownloadPage: React.FC<DownloadPage> = () => {
         <div className="flex flex-col flex-1 w-full h-full justify-center items-center">
           {" "}
           <span className="countdown font-mono text-6xl">
-            <span style={{ "--value": timeLeft }}></span>
+            <span style={{ "--value": timeLeft } as React.CSSProperties}></span>
           </span>
           <div>
             {game && (

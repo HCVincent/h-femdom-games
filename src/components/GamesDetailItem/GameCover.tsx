@@ -39,6 +39,7 @@ const GameCover: React.FC<GameCoverProps> = ({ coverImage, imagesGroup }) => {
                   src={image}
                   width={500}
                   height={500}
+                  loading={"eager"}
                   sizes="100vw"
                   className="flex object-cover w-full h-[420px] cursor-pointer rounded-md"
                 />
