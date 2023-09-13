@@ -122,6 +122,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                   </li>
                   <li>
                     <SearchInput
+                      customId="drawer"
                       results={results}
                       setResults={setResults}
                       setIsMyInputFocused={setIsMyInputFocused}

@@ -37,6 +37,7 @@ const RightContent: React.FC<RightContentProps> = ({
       <div className="flex w-full h-full">
         <div className="flex flex-col w-full mr-2">
           <SearchInput
+            customId="navbar"
             results={results}
             setResults={setResults}
             setIsMyInputFocused={setIsMyInputFocused}
