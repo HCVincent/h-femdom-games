@@ -2,7 +2,7 @@ import { Game } from "@/atoms/gamesAtom";
 import { firestore } from "@/firebase/clientApp";
 import useGames from "@/hooks/useGames";
 import Update from "@/Modal/Admin/Update";
-import { Image } from "@chakra-ui/react";
+import Image from "next/image";
 import { doc, serverTimestamp, setDoc, Timestamp } from "firebase/firestore";
 import moment from "moment";
 import React, { useState } from "react";
@@ -79,7 +79,7 @@ const GameItem: React.FC<GameItemProps> = ({ game }) => {
             <Image
               alt={game.title}
               src={game.coverImage ? game.coverImage : default_cover.src}
-              display={imageLoading ? "none" : "unset"}
+              fill={true}
               className="w-full object-cover rounded-lg "
               onLoad={() => setImageLoading(false)}
             />

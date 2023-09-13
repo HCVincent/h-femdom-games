@@ -1,31 +1,43 @@
 import useGames from "@/hooks/useGames";
 import { EmblaOptionsType } from "embla-carousel-react";
-import { DocumentData, Query } from "firebase/firestore";
+import {
+  DocumentData,
+  Query,
+  collection,
+  getDocs,
+  limit,
+  orderBy,
+  query,
+} from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import EmblaCarousel from "./EmblaCarousel";
+import { GetServerSidePropsContext } from "next";
+import { firestore } from "@/firebase/clientApp";
+import { Game } from "@/atoms/gamesAtom";
 
 type RecommendationListsProps = {};
 const OPTIONS: EmblaOptionsType = { loop: true };
+
 const RecommendationLists: React.FC<RecommendationListsProps> = () => {
   const { readGames } = useGames();
 
   let next: Query<DocumentData>;
   const [loading, setLoading] = useState(false);
-  const { gameStateValue } = useGames();
+  const { gameStateValue, setGameStateValue } = useGames();
 
-  const handleOnReadGames = async () => {
-    setLoading(true);
-    try {
-      await readGames("recommendations");
-    } catch (error) {
-      console.log("handleOnReadGames error", error);
-    }
-    setLoading(false);
-  };
+  // const handleOnReadGames = async () => {
+  //   setLoading(true);
+  //   try {
+  //     await readGames("recommendations");
+  //   } catch (error) {
+  //     console.log("handleOnReadGames error", error);
+  //   }
+  //   setLoading(false);
+  // };
 
-  useEffect(() => {
-    handleOnReadGames();
-  }, []);
+  // useEffect(() => {
+  //   handleOnReadGames();
+  // }, []);
 
   return (
     <section className="sandbox__carousel mt-10">
@@ -42,4 +54,5 @@ const RecommendationLists: React.FC<RecommendationListsProps> = () => {
     </section>
   );
 };
+
 export default RecommendationLists;

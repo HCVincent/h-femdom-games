@@ -2,11 +2,11 @@ import { Game } from "@/atoms/gamesAtom";
 import moment from "moment";
 import React, { useState } from "react";
 import questionmark from "../../../../public/questionmark.png";
-import { Image } from "@chakra-ui/react";
 import ThumbsLike from "@/components/IndexPageContent/Recommendation/ThumbsLike";
 import Link from "next/link";
 import TagsCardList from "@/components/Tags/TagsCardList";
-
+import Image from "next/image";
+import { NextApiRequest, NextApiResponse } from "next";
 type GamesGridItemProps = {
   game: Game;
   userCollectionValue?: string;
@@ -46,13 +46,15 @@ const GamesGridItem: React.FC<GamesGridItemProps> = ({
             <Image
               src={game.coverImage ? game.coverImage : questionmark.src}
               alt={"cover"}
+              width={200}
+              height={200}
               className="w-full object-cover rounded-lg cursor-pointer"
               onLoad={() => setImageLoading(false)}
             />
           </figure>
           <div className="card-body cursor-pointer flex flex-col h-48 m-0 p-2">
             <h2 className="card-title  text-xl justify-start top-0 align-top items-start capitalize line-clamp-2">
-              {game.title.charAt(0).toUpperCase() + game.title.slice(1)}{" "}
+              {game.title}
             </h2>
             <span className="flex text-slate-500 text-sm">
               {game.createdAt &&
@@ -78,4 +80,5 @@ const GamesGridItem: React.FC<GamesGridItemProps> = ({
     </div>
   );
 };
+
 export default GamesGridItem;

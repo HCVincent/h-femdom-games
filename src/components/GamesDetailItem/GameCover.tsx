@@ -30,15 +30,16 @@ const GameCover: React.FC<GameCoverProps> = ({ coverImage, imagesGroup }) => {
       {imagesGroup && imagesGroup.length > 0 ? (
         <div className="embla   p-0 ">
           <div className="embla__viewport" ref={emblaRef}>
-            <div className="embla__container">
+            <div className="embla__container ">
               {imagesGroup.map((image, index) => (
                 <Image
                   key={index}
+                  priority
                   alt={`image${index}`}
                   onClick={() => openImageViewer(index)}
                   src={image}
-                  width={500}
-                  height={500}
+                  width={0}
+                  height={0}
                   loading={"eager"}
                   sizes="100vw"
                   className="flex object-cover w-full h-[420px] cursor-pointer rounded-md"

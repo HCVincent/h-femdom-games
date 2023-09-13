@@ -136,7 +136,7 @@ const ThumbsLike: React.FC<ThumbsLikeProps> = ({
         )}
       </button>
       {game.address && (
-        <div className="flex justify-center items-center ">
+        <div className="flex justify-center items-center cursor-pointer">
           <div
             onClick={(e) => {
               e.stopPropagation();

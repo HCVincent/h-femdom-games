@@ -44,10 +44,10 @@ const RecommendationItem: React.FC<RecommendationItemProps> = ({
         <Image
           /* @ts-ignore */
           src={game.coverImage}
-          priority={true}
+          priority
+          width={300}
+          height={300}
           alt=""
-          width={500}
-          height={500}
           sizes="100vw"
           className="embla__slide__img flex object-cover w-full h-[480px] cursor-pointer"
           // onClick={() => {

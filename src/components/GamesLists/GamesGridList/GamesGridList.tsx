@@ -144,4 +144,5 @@ const GamesGridList: React.FC<GamesGridListProps> = () => {
     </>
   );
 };
+
 export default GamesGridList;

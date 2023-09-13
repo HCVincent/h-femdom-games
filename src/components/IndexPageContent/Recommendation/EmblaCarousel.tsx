@@ -47,38 +47,41 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
     <div className="embla hover:scale-105 transition-all">
       <div className="embla__viewport" ref={emblaMainRef}>
         <div className="embla__container">
-          {slides.map((game, index) => (
-            <RecommendationItem
-              key={game.id}
-              game={game}
-              index={index}
-              onSelectGame={onSelectGame}
-              onVote={onVote}
-              onCollect={onCollect}
-              userVoteValue={
-                gameStateValue.gameVotes.find((vote) => vote.gameId === game.id)
-                  ?.voteValue
-              }
-              userCollectionValue={
-                gameStateValue.gameCollections.find(
-                  (collection) => collection.gameId === game.id
-                )?.gameId
-              }
-            />
-          ))}
+          {slides &&
+            slides.map((game, index) => (
+              <RecommendationItem
+                key={game.id}
+                game={game}
+                index={index}
+                onSelectGame={onSelectGame}
+                onVote={onVote}
+                onCollect={onCollect}
+                userVoteValue={
+                  gameStateValue.gameVotes.find(
+                    (vote) => vote.gameId === game.id
+                  )?.voteValue
+                }
+                userCollectionValue={
+                  gameStateValue.gameCollections.find(
+                    (collection) => collection.gameId === game.id
+                  )?.gameId
+                }
+              />
+            ))}
         </div>
         <div className="embla-thumbs flex h-20 lg:h-30 w-full">
           <div className="embla-thumbs__viewport w-full" ref={emblaThumbsRef}>
             <div className="embla-thumbs__container flex w-full">
-              {slides.map((game, index) => (
-                <Thumb
-                  onClick={() => onThumbClick(index)}
-                  selected={index === selectedIndex}
-                  index={index}
-                  imgSrc={game.coverImage!}
-                  key={index}
-                />
-              ))}
+              {slides &&
+                slides.map((game, index) => (
+                  <Thumb
+                    onClick={() => onThumbClick(index)}
+                    selected={index === selectedIndex}
+                    index={index}
+                    imgSrc={game.coverImage!}
+                    key={index}
+                  />
+                ))}
             </div>
           </div>
         </div>
