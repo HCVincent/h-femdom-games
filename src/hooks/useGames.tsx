@@ -55,7 +55,8 @@ const useGames = () => {
       selectedGame: game,
     }));
     if (parameter !== "admin") {
-      router.push(`/games/${game.id}`);
+      // router.push(`/games/${game.id}`);
+      window.open(`/games/${game.id}`, "_blank");
     }
   };
   const onSelectDownload = (game: Game) => {
@@ -63,7 +64,8 @@ const useGames = () => {
       ...prev,
       selectedGame: game,
     }));
-    router.push(`/downloads/${game.id}`);
+    // router.push(`/downloads/${game.id}`);
+    window.open(`/downloads/${game.id}`, "_blank");
   };
   const readGamesByTag = async (
     tag: string,

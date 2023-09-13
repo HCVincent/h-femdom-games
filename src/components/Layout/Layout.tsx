@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { createContext, useEffect } from "react";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 declare global {
@@ -43,23 +43,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <div className="w-full top-0 sticky z-50 ">
         <Navbar />
       </div>
-      {/* Your ads code here */}
-      {/* <script
-        type="text/javascript"
-        data-cfasync="false"
-        async
-        src="https://poweredby.jads.co/js/jads.js"
-      ></script>
-      <ins id="1033726" data-width="158" data-height="180"></ins>
-      <script
-        type="text/javascript"
-        data-cfasync="false"
-        async
-        dangerouslySetInnerHTML={{
-          __html: `(adsbyjuicy = window.adsbyjuicy || []).push({'adzone':1033726});`,
-        }}
-      /> */}
-
       <main className="flex justify-center w-full">{children}</main>
       <div
         id="adsContainer"
