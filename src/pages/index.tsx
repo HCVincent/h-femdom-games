@@ -9,6 +9,7 @@ import React, { useEffect, useState } from "react";
 import { GetServerSidePropsContext } from "next";
 import { firestore } from "@/firebase/clientApp";
 import { Game } from "@/atoms/gamesAtom";
+import Script from "next/script";
 
 type RecommendationListsProps = { games: Game[] };
 const Home: React.FC<RecommendationListsProps> = ({ games }) => {
@@ -26,6 +27,20 @@ const Home: React.FC<RecommendationListsProps> = ({ games }) => {
         <TagsCategories />
         <GamesGridList />
       </div>
+      <Script
+        type="application/javascript"
+        data-idzone="5077870"
+        data-ad_frequency_count="1"
+        data-ad_frequency_period="60"
+        data-type="desktop"
+        data-browser_settings="1"
+        data-ad_trigger_method="3"
+        src="https://a.pemsrv.com/fp-interstitial.js"
+      ></Script>
+      <Script type="application/javascript" id="desktop-fullpage-interstitial">
+        {`document.addEventListener('creativeDisplayed-5077870', console.log,
+        false);`}
+      </Script>
     </div>
   );
 };

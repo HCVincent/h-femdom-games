@@ -88,7 +88,7 @@ const DownloadPage: React.FC<DownloadPage> = () => {
     <div className="flex flex-col w-5/6 h-[calc(50vw-14rem)] mb-20 justify-center items-center">
       <div
         id="adsContainer-exoclick"
-        className="flex justify-center items-center h-[15rem] w-[84rem] bg-white "
+        className="flex h-[26rem] w-[72rem]"
         onClick={() => {
           setClickedAds(true);
         }}

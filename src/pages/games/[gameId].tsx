@@ -48,6 +48,7 @@ const GamePage: React.FC = () => {
   useEffect(() => {
     // Get the ads container element
     const adsContainer = document.getElementById("adsContainerImg");
+    const adsDesktopFullpage = document.getElementById("adsDesktopFullpage");
 
     if (adsContainer) {
       // Ads code here
@@ -67,6 +68,24 @@ const GamePage: React.FC = () => {
       (window.adsbyjuicy = window.adsbyjuicy || []).push({ adzone: 1033726 });
     }
 
+    if (adsDesktopFullpage) {
+      // Ads code here
+      const script = document.createElement("script");
+      script.src = "https://a.pemsrv.com/fp-interstitial.js";
+      script.type = "application/javascript";
+      script.setAttribute("data-idzone", "5077870");
+      script.setAttribute("data-ad_frequency_count", "1");
+      script.setAttribute("data-ad_frequency_period", "60");
+      script.setAttribute("data-type", "desktop");
+      script.setAttribute("data-browser_settings", "1");
+      script.setAttribute("data-ad_trigger_method", "3");
+      adsDesktopFullpage.appendChild(script);
+
+      const eventScript = document.createElement("script");
+      eventScript.type = "application/javascript";
+      eventScript.textContent = `document.addEventListener('creativeDisplayed-5077870', console.log, false);`;
+      adsDesktopFullpage.appendChild(eventScript);
+    }
     return () => {
       // Cleanup if necessary
     };
@@ -103,7 +122,7 @@ const GamePage: React.FC = () => {
               className="absolute m-auto z-10 left-0 top-0 right-0 bottom-0 w-[158px] h-[180px]"
             ></div>
           </div>
-
+          <div id="adsDesktopFullpage"></div>
           {game && game.tags && (
             <RelatedGames
               gameTag={game.tags[Math.floor(Math.random() * game.tags.length)]}
