@@ -85,10 +85,10 @@ const DownloadPage: React.FC<DownloadPage> = () => {
   }, [router.query, gameStateValue.selectedGame]);
 
   return (
-    <div className="flex flex-col w-5/6 h-[calc(50vw-14rem)] mb-20">
+    <div className="flex flex-col w-5/6 h-[calc(50vw-14rem)] mb-20 justify-center items-center">
       <div
         id="adsContainer-exoclick"
-        className="flex justify-center items-center h-[20rem] bg-white"
+        className="flex justify-center items-center h-[15rem] w-[84rem] bg-white "
         onClick={() => {
           setClickedAds(true);
         }}

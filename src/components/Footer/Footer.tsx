@@ -6,13 +6,13 @@ type FooterProps = {};
 const Footer: React.FC<FooterProps> = () => {
   return (
     <footer className="footer p-10 bg-neutral text-neutral-content mt-10">
-      <nav>
+      {/* <nav>
         <header className="footer-title">Services</header>
         <a className="link link-hover line-through">Branding</a>
         <a className="link link-hover line-through">Design</a>
         <a className="link link-hover line-through">Marketing</a>
         <a className="link link-hover line-through">Advertisement</a>
-      </nav>
+      </nav> */}
       <nav>
         <header className="footer-title">Company</header>
         <Link className="link link-hover line-through" href="/">

@@ -1,10 +1,9 @@
 import { Game } from "@/atoms/gamesAtom";
-import React, { useState } from "react";
-import Image from "next/image";
-import { FaRegHeart, FaHeart } from "react-icons/fa";
 import moment from "moment";
+import Image from "next/image";
+import React from "react";
 import ThumbsLike from "./ThumbsLike";
-import Link from "next/link";
+import default_cover from "../../../../public/default_cover.png";
 type RecommendationItemProps = {
   game: Game;
   index: number;
@@ -46,10 +45,10 @@ const RecommendationItem: React.FC<RecommendationItemProps> = ({
       >
         <Image
           /* @ts-ignore */
-          src={game.coverImage}
+          src={game.coverImage ? game.coverImage : default_cover}
           priority
-          width={300}
-          height={300}
+          width={200}
+          height={200}
           alt=""
           sizes="100vw"
           className="embla__slide__img inline-block object-cover w-full h-auto lg:h-[480px] cursor-pointer"
