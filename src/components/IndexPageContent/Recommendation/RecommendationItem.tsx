@@ -40,7 +40,10 @@ const RecommendationItem: React.FC<RecommendationItemProps> = ({
       <div className="embla__slide__number">
         <span>{index + 1}</span>
       </div>
-      <div onClick={() => onSelectGame(game)}>
+      <div
+        onClick={() => onSelectGame(game)}
+        className="flex h-[480px] items-center bg-black align-middle"
+      >
         <Image
           /* @ts-ignore */
           src={game.coverImage}
@@ -49,10 +52,7 @@ const RecommendationItem: React.FC<RecommendationItemProps> = ({
           height={300}
           alt=""
           sizes="100vw"
-          className="embla__slide__img flex object-cover w-full h-[480px] cursor-pointer"
-          // onClick={() => {
-          //   onSelectGame(game);
-          // }}
+          className="embla__slide__img inline-block object-cover w-full h-auto lg:h-[480px] cursor-pointer"
         />
       </div>
 
