@@ -11,7 +11,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>AcgFemdom Download</title>
+        <title>AcgFemdom</title>
         <meta
           name={process.env.NEXT_PUBLIC_JUICYADS_NAME}
           content={process.env.NEXT_PUBLIC_JUICYADS_CONTENT}
