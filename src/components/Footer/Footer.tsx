@@ -6,13 +6,10 @@ type FooterProps = {};
 const Footer: React.FC<FooterProps> = () => {
   return (
     <footer className="footer p-10 bg-neutral text-neutral-content mt-10">
-      {/* <nav>
-        <header className="footer-title">Services</header>
-        <a className="link link-hover line-through">Branding</a>
-        <a className="link link-hover line-through">Design</a>
-        <a className="link link-hover line-through">Marketing</a>
-        <a className="link link-hover line-through">Advertisement</a>
-      </nav> */}
+      <span className="text-lg max-w-[20rem]">
+        {`AcgFemdom is a website you can download female dominance type of games, animes and comics for
+        free. We will keep on updating contents.`}
+      </span>
       <nav>
         <header className="footer-title">Company</header>
         <Link className="link link-hover line-through" href="/">

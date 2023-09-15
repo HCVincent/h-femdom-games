@@ -44,7 +44,7 @@ const GameDetailItem: React.FC<GameDetailItemProps> = ({ game, user }) => {
         <span className=" text-4xl font-bold capitalize lg:text-6xl">
           {game.title}
         </span>
-        <div className="w-[40rem]">
+        <div className="w-[40rem] mt-4">
           <ThumbsLike
             userVoteValue={
               gameStateValue.gameVotes.find((vote) => vote.gameId === game.id)
