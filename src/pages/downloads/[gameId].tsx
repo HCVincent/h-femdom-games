@@ -5,6 +5,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
+import Script from "next/script";
 
 type DownloadPage = {};
 
@@ -38,32 +39,6 @@ const DownloadPage: React.FC<DownloadPage> = () => {
     };
   }, [timeLeft]);
 
-  useEffect(() => {
-    // Add the ads script dynamically to the adsContainer-exoclick div
-    const adsContainer = document.getElementById("adsContainer-exoclick");
-    if (adsContainer) {
-      const script = document.createElement("script");
-      script.src = "https://a.magsrv.com/ad-provider.js";
-      script.type = "application/javascript";
-      script.async = true;
-
-      const ins = document.createElement("ins");
-      ins.className = "eas6a97888e";
-      ins.setAttribute("data-zoneid", "5076330");
-      ins.setAttribute(
-        "data-keywords",
-        "cartoon,games,foot,foot fetish,femdom,female dominance"
-      );
-
-      const pushScript = document.createElement("script");
-      pushScript.textContent = `(AdProvider = window.AdProvider || []).push({"serve": {}});`;
-
-      adsContainer.appendChild(script);
-      adsContainer.appendChild(ins);
-      adsContainer.appendChild(pushScript);
-    }
-  }, []);
-
   const fetchGame = async (gameId: string) => {
     try {
       const gameDocRef = doc(firestore, "games", gameId);
@@ -92,7 +67,19 @@ const DownloadPage: React.FC<DownloadPage> = () => {
         onClick={() => {
           setClickedAds(true);
         }}
-      ></div>
+      >
+        <Script
+          type="application/javascript"
+          async
+          src="https://a.magsrv.com/ad-provider.js"
+        ></Script>
+        <ins
+          className="eas6a97888e"
+          data-zoneid="5076330"
+          data-keywords="cartoon,games,foot,foot fetish,femdom,female dominance"
+        ></ins>
+        <Script id="window.adsbyjuicy-banner-detail">{`(AdProvider = window.AdProvider || []).push({"serve": {}});`}</Script>
+      </div>
       <div className="flex  w-full h-[60rem] justify-center items-center mt-10">
         <div className="relative flex-1 h-full"></div>
         <div className="flex flex-col flex-1 w-full h-full justify-center items-center">

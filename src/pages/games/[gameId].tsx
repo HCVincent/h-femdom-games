@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import girls1 from "../../../public/girls/1.png";
+import Script from "next/script";
 
 declare global {
   interface Window {
@@ -45,51 +46,6 @@ const GamePage: React.FC = () => {
     }
   }, [router.query, gameStateValue.selectedGame]);
 
-  useEffect(() => {
-    // Get the ads container element
-    const adsContainer = document.getElementById("adsContainerImg");
-    const adsDesktopFullpage = document.getElementById("adsDesktopFullpage");
-
-    if (adsContainer) {
-      // Ads code here
-      const script = document.createElement("script");
-      script.src = "https://poweredby.jads.co/js/jads.js";
-      script.type = "text/javascript";
-      script.async = true;
-      script.setAttribute("data-cfasync", "false");
-      adsContainer.appendChild(script);
-
-      const ins = document.createElement("ins");
-      ins.id = "1033726";
-      ins.setAttribute("data-width", "158");
-      ins.setAttribute("data-height", "180");
-      adsContainer.appendChild(ins);
-
-      (window.adsbyjuicy = window.adsbyjuicy || []).push({ adzone: 1033726 });
-    }
-
-    if (adsDesktopFullpage) {
-      // Ads code here
-      const script = document.createElement("script");
-      script.src = "https://a.pemsrv.com/fp-interstitial.js";
-      script.type = "application/javascript";
-      script.setAttribute("data-idzone", "5077870");
-      script.setAttribute("data-ad_frequency_count", "1");
-      script.setAttribute("data-ad_frequency_period", "60");
-      script.setAttribute("data-type", "desktop");
-      script.setAttribute("data-browser_settings", "1");
-      script.setAttribute("data-ad_trigger_method", "3");
-      adsDesktopFullpage.appendChild(script);
-
-      const eventScript = document.createElement("script");
-      eventScript.type = "application/javascript";
-      eventScript.textContent = `document.addEventListener('creativeDisplayed-5077870', console.log, false);`;
-      adsDesktopFullpage.appendChild(eventScript);
-    }
-    return () => {
-      // Cleanup if necessary
-    };
-  }, []);
   return (
     <div className="flex flex-col lg:flex-row w-full  justify-center">
       <PageContent>
@@ -120,7 +76,21 @@ const GamePage: React.FC = () => {
             <div
               id="adsContainerImg"
               className="absolute m-auto z-10 left-0 top-0 right-0 bottom-0 w-[158px] h-[180px]"
-            ></div>
+            >
+              <Script
+                type="text/javascript"
+                data-cfasync="false"
+                async
+                src="https://poweredby.jads.co/js/jads.js"
+              ></Script>
+              <ins id="1033726" data-width="158" data-height="180"></ins>
+              <Script
+                id="window.adsbyjuicy-banner"
+                type="text/javascript"
+                data-cfasync="false"
+                async
+              >{`(adsbyjuicy = window.adsbyjuicy || []).push({'adzone':1033726});`}</Script>
+            </div>
           </div>
           <div id="adsDesktopFullpage"></div>
           {game && game.tags && (
@@ -131,6 +101,16 @@ const GamePage: React.FC = () => {
           )}
         </div>
       </PageContent>
+      <Script
+        type="application/javascript"
+        data-idzone="5077870"
+        data-ad_frequency_count="1"
+        data-ad_frequency_period="60"
+        data-type="desktop"
+        data-browser_settings="1"
+        data-ad_trigger_method="3"
+        src="https://a.pemsrv.com/fp-interstitial.js"
+      ></Script>
     </div>
   );
 };

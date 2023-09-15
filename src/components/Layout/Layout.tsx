@@ -1,6 +1,7 @@
 import React, { createContext, useEffect } from "react";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
+import Script from "next/script";
 declare global {
   interface Window {
     adsbyjuicy: {
@@ -12,49 +13,6 @@ interface LayoutProps {
   children: React.ReactNode;
 }
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-  useEffect(() => {
-    // Get the ads container element
-    const adsContainer = document.getElementById("adsContainer");
-    const adsContainerMobile = document.getElementById("adsContainer-mobile");
-
-    if (adsContainer) {
-      // Ads code here
-      const script = document.createElement("script");
-      script.src = "https://poweredby.jads.co/js/jads.js";
-      script.type = "text/javascript";
-      script.async = true;
-      script.setAttribute("data-cfasync", "false");
-      adsContainer.appendChild(script);
-
-      const ins = document.createElement("ins");
-      ins.id = "1033717";
-      ins.setAttribute("data-width", "908");
-      ins.setAttribute("data-height", "270");
-      adsContainer.appendChild(ins);
-
-      (window.adsbyjuicy = window.adsbyjuicy || []).push({ adzone: 1033717 });
-    }
-    if (adsContainerMobile) {
-      // Ads code here
-      const script = document.createElement("script");
-      script.src = "https://poweredby.jads.co/js/jads.js";
-      script.type = "text/javascript";
-      script.async = true;
-      script.setAttribute("data-cfasync", "false");
-      adsContainerMobile.appendChild(script);
-
-      const ins = document.createElement("ins");
-      ins.id = "1034248";
-      ins.setAttribute("data-width", "300");
-      ins.setAttribute("data-height", "112");
-      adsContainerMobile.appendChild(ins);
-
-      (window.adsbyjuicy = window.adsbyjuicy || []).push({ adzone: 1034248 });
-    }
-    return () => {
-      // Cleanup if necessary
-    };
-  }, []);
   return (
     <div className="flex flex-col w-full min-h-screen justify-between">
       <div className="w-full top-0 sticky z-50 ">
@@ -64,11 +22,40 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <div
         id="adsContainer"
         className="hidden lg:flex justify-center items-center mt-4"
-      ></div>
+      >
+        <Script
+          type="text/javascript"
+          data-cfasync="false"
+          async
+          src="https://poweredby.jads.co/js/jads.js"
+        ></Script>
+        <ins id="1033717" data-width="908" data-height="270"></ins>
+        <Script
+          id="window.adsbyjuicy-banner"
+          type="text/javascript"
+          data-cfasync="false"
+          async
+        >{`(adsbyjuicy = window.adsbyjuicy || []).push({'adzone':1033717});`}</Script>
+      </div>
+
       <div
         id="adsContainer-mobile"
         className="flex lg:hidden justify-center items-center mt-4"
-      ></div>
+      >
+        <Script
+          type="text/javascript"
+          data-cfasync="false"
+          async
+          src="https://poweredby.jads.co/js/jads.js"
+        ></Script>
+        <ins id="1034248" data-width="300" data-height="112"></ins>
+        <Script
+          id="window.adsbyjuicy-image"
+          type="text/javascript"
+          data-cfasync="false"
+          async
+        >{`(adsbyjuicy = window.adsbyjuicy || []).push({'adzone':1034248});`}</Script>
+      </div>
       <Footer />
     </div>
   );
