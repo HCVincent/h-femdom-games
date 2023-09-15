@@ -197,7 +197,7 @@ const Navbar: React.FC<NavbarProps> = () => {
             onClick={() => router.push("/")}
           >
             <div className="flex w-auto h-10">
-              <Image src={logo} alt="home" className="w-full h-full"></Image>
+              <Image src={logo} alt="home" className="lg:w-full h-full"></Image>
               <span className="normal-case">Home</span>
             </div>
           </button>
