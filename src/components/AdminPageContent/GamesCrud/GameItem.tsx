@@ -79,7 +79,8 @@ const GameItem: React.FC<GameItemProps> = ({ game }) => {
             <Image
               alt={game.title}
               src={game.coverImage ? game.coverImage : default_cover.src}
-              fill={true}
+              width={100}
+              height={100}
               className="w-full object-cover rounded-lg "
               onLoad={() => setImageLoading(false)}
             />

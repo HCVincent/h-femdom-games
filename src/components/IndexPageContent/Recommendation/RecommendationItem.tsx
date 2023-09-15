@@ -1,9 +1,11 @@
-import { Game } from "@/atoms/gamesAtom";
+import { Game, gameState } from "@/atoms/gamesAtom";
 import moment from "moment";
 import Image from "next/image";
 import React from "react";
 import ThumbsLike from "./ThumbsLike";
 import default_cover from "../../../../public/default_cover.png";
+import Link from "next/link";
+import { useSetRecoilState } from "recoil";
 type RecommendationItemProps = {
   game: Game;
   index: number;
@@ -30,6 +32,7 @@ const RecommendationItem: React.FC<RecommendationItemProps> = ({
   userVoteValue,
   userCollectionValue,
 }) => {
+  const setGameStateValue = useSetRecoilState(gameState);
   return (
     <div
       id={`slide${index}`}
@@ -39,8 +42,15 @@ const RecommendationItem: React.FC<RecommendationItemProps> = ({
       <div className="embla__slide__number">
         <span>{index + 1}</span>
       </div>
-      <div
-        onClick={() => onSelectGame(game)}
+      <Link
+        href={`/games/${game.id}`}
+        target="_blank"
+        onClick={() => {
+          setGameStateValue((prev) => ({
+            ...prev,
+            selectedGame: game,
+          }));
+        }}
         className="flex h-[480px] items-center bg-black align-middle"
       >
         <Image
@@ -53,7 +63,7 @@ const RecommendationItem: React.FC<RecommendationItemProps> = ({
           sizes="100vw"
           className="embla__slide__img inline-block object-cover w-full h-auto lg:h-[480px] cursor-pointer"
         />
-      </div>
+      </Link>
 
       <div className="flex flex-1 h-full items-center justify-between px-8">
         <div className="flex items-end p-2">
