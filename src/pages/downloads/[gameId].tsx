@@ -88,7 +88,7 @@ const DownloadPage: React.FC<DownloadPage> = () => {
     <div className="flex flex-col w-5/6 h-[calc(50vw-14rem)] mb-20 justify-center items-center">
       <div
         id="adsContainer-exoclick"
-        className="flex h-[26rem] w-[72rem]"
+        className="hidden lg:flex h-[26rem] w-[72rem]"
         onClick={() => {
           setClickedAds(true);
         }}
@@ -114,15 +114,15 @@ const DownloadPage: React.FC<DownloadPage> = () => {
             )}
           </div>
         </div>
-        <div className="relative flex-1  h-full">
+        <div className="relative flex-1  h-full ">
           <Image
             alt=""
             src={clickedAds ? "/girls/Pov7.png" : "/girls/Full1.png"}
             width={clickedAds ? 300 : 200}
-            height={clickedAds ? 300 : 200}
-            className="absolute top-[2rem] left-[2rem]"
+            height={clickedAds ? 300 : 100}
+            className="absolute top-[4rem] lg:top-[2rem] left-[2rem] hidden lg:flex"
           />
-          <div className="chat chat-start absolute top-0 left-[22rem]">
+          <div className="chat chat-end lg:chat-start absolute lg:left-[22rem] hidden lg:flex">
             <div className="chat-bubble w-[12rem]">
               {clickedAds ? rightText2 : rightText1}
             </div>
