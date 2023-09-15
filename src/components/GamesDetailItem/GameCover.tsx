@@ -26,7 +26,7 @@ const GameCover: React.FC<GameCoverProps> = ({ coverImage, imagesGroup }) => {
     setIsViewerOpen(false);
   };
   return (
-    <div>
+    <div className="w-full h-[420px]">
       {imagesGroup && imagesGroup.length > 0 ? (
         <div className="embla   p-0 ">
           <div className="embla__viewport" ref={emblaRef}>
@@ -40,7 +40,6 @@ const GameCover: React.FC<GameCoverProps> = ({ coverImage, imagesGroup }) => {
                   src={image}
                   width={0}
                   height={0}
-                  loading={"eager"}
                   sizes="100vw"
                   className="flex object-cover w-full h-[420px] cursor-pointer rounded-md"
                 />
@@ -66,7 +65,7 @@ const GameCover: React.FC<GameCoverProps> = ({ coverImage, imagesGroup }) => {
           width={500}
           height={500}
           sizes="100vw"
-          className="flex object-cover w-full h-[480px] cursor-pointer rounded-md"
+          className="flex object-cover w-full h-[420px] cursor-pointer rounded-md"
         ></Image>
       )}
     </div>

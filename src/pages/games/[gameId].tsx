@@ -109,7 +109,7 @@ const GamePage: React.FC = () => {
               src={girls1}
               width={500}
               height={500}
-              className="absolute z-1 top-0"
+              className="absolute z-1 top-0 w-auto h-auto"
             />
             <div className="chat chat-start absolute right-0 ">
               <div className="chat-bubble w-[12rem]">

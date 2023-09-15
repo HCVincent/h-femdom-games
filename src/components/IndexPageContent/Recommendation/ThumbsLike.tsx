@@ -49,34 +49,7 @@ const ThumbsLike: React.FC<ThumbsLikeProps> = ({
     setLoadingDownVote(false);
   };
   const [like, setLike] = useState(false);
-  useEffect(() => {
-    // Create the script element for the ExoClick ad
-    const adsContainerClick = document.getElementById("adsContainerClick");
-    if (adsContainerClick) {
-      const script = document.createElement("script");
-      script.type = "application/javascript";
 
-      // Set attributes using setAttribute method
-      script.textContent = `var ad_idzone = "5077642",
-      ad_popup_fallback = true,
-      ad_popup_force = false,
-      ad_chrome_enabled = true,
-      ad_new_tab = true,
-      ad_frequency_period = 60,
-      ad_frequency_count = 1,
-      ad_trigger_method = 3,
-      ad_trigger_delay = 0;`;
-
-      // Create the script element for the ExoClick ad source
-      const adScript = document.createElement("script");
-      adScript.src = "https://a.pemsrv.com/popunder1000.js";
-      adScript.type = "application/javascript";
-
-      // Append the script elements to the document
-      adsContainerClick.appendChild(script);
-      adsContainerClick.appendChild(adScript);
-    }
-  }, []);
   return (
     <div className="flex  h-[4rem] justify-between align-middle p-2 text-xl">
       <div className="flex w-[12rem] justify-between px-2 items-end">
@@ -174,7 +147,6 @@ const ThumbsLike: React.FC<ThumbsLikeProps> = ({
           >
             <BsDownload className="w-12 h-12"></BsDownload>
           </div>
-          <div id="adsContainerClick"></div>
         </div>
       )}
     </div>

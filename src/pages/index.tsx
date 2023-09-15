@@ -21,6 +21,34 @@ const Home: React.FC<RecommendationListsProps> = ({ games }) => {
       gameRecommendations: games as Game[],
     }));
   }, [games]);
+  useEffect(() => {
+    // Create the script element for the ExoClick ad
+    const adsContainerClick = document.getElementById("adsContainerClick");
+    if (adsContainerClick) {
+      const script = document.createElement("script");
+      script.type = "application/javascript";
+
+      // Set attributes using setAttribute method
+      script.textContent = `var ad_idzone = "5077642",
+      ad_popup_fallback = true,
+      ad_popup_force = false,
+      ad_chrome_enabled = true,
+      ad_new_tab = true,
+      ad_frequency_period = 60,
+      ad_frequency_count = 1,
+      ad_trigger_method = 3,
+      ad_trigger_delay = 0;`;
+
+      // Create the script element for the ExoClick ad source
+      const adScript = document.createElement("script");
+      adScript.src = "https://a.pemsrv.com/popunder1000.js";
+      adScript.type = "application/javascript";
+
+      // Append the script elements to the document
+      adsContainerClick.appendChild(script);
+      adsContainerClick.appendChild(adScript);
+    }
+  }, []);
   return (
     <div className="flex flex-col w-full items-center mt-5">
       <div className="flex flex-col w-full justify-center  lg:w-5/6">
@@ -29,20 +57,7 @@ const Home: React.FC<RecommendationListsProps> = ({ games }) => {
         <BannerUnderTags />
         <GamesGridList />
       </div>
-      <Script
-        type="application/javascript"
-        data-idzone="5077870"
-        data-ad_frequency_count="1"
-        data-ad_frequency_period="60"
-        data-type="desktop"
-        data-browser_settings="1"
-        data-ad_trigger_method="3"
-        src="https://a.pemsrv.com/fp-interstitial.js"
-      ></Script>
-      <Script type="application/javascript" id="desktop-fullpage-interstitial">
-        {`document.addEventListener('creativeDisplayed-5077870', console.log,
-        false);`}
-      </Script>
+      <div id="adsContainerClick"></div>
     </div>
   );
 };
