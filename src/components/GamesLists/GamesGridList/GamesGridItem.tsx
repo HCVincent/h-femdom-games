@@ -36,6 +36,7 @@ const GamesGridItem: React.FC<GamesGridItemProps> = ({
   return (
     <div className="flex w-[28rem]">
       <Link
+        href={`/games/${game.id}`}
         target="_blank"
         onClick={() => {
           setGameStateValue((prev) => ({
@@ -43,7 +44,6 @@ const GamesGridItem: React.FC<GamesGridItemProps> = ({
             selectedGame: game,
           }));
         }}
-        href={`/games/${game.id}`}
       >
         <div className="card  bg-base-100 shadow-xl h-[34rem]  hover:scale-105 transition-all ">
           <figure className="h-52 w-full items-start">
