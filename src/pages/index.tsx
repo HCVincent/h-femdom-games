@@ -10,6 +10,7 @@ import { GetServerSidePropsContext } from "next";
 import { firestore } from "@/firebase/clientApp";
 import { Game } from "@/atoms/gamesAtom";
 import Script from "next/script";
+import BannerUnderTags from "@/components/Ads/BannerUnderTags";
 
 type RecommendationListsProps = { games: Game[] };
 const Home: React.FC<RecommendationListsProps> = ({ games }) => {
@@ -22,9 +23,10 @@ const Home: React.FC<RecommendationListsProps> = ({ games }) => {
   }, [games]);
   return (
     <div className="flex flex-col w-full items-center mt-5">
-      <div className="flex flex-col w-full justify-center lg:w-5/6">
+      <div className="flex flex-col w-full justify-center  lg:w-5/6">
         <RecommendationLists />
         <TagsCategories />
+        <BannerUnderTags />
         <GamesGridList />
       </div>
       <Script

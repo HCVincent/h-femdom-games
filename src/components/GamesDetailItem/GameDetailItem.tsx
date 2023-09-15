@@ -72,7 +72,7 @@ const GameDetailItem: React.FC<GameDetailItemProps> = ({ game, user }) => {
       {game.password && (
         <span className="text-4xl text-red-600">{game.password}</span>
       )}
-      <div id="adsBanner-exoclick" className="flex h-[26rem] w-[72rem]  "></div>
+      <div id="adsBanner-exoclick" className="flex h-[250px] w-[300px]"></div>
       <span className="mt-10">{game.body}</span>
       <Comments game={game} user={user} />
     </div>
