@@ -11,6 +11,7 @@ const ThemeButton: React.FC<ThemeButtonProps> = ({ toggleTheme, theme }) => {
       <label className="swap swap-rotate">
         {""}
         <input
+          id="theme-checkbox"
           type="checkbox"
           checked={theme !== "dark"}
           onChange={toggleTheme}

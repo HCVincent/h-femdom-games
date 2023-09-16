@@ -8,6 +8,7 @@ type TagCardProps = {
 const TagCard: React.FC<TagCardProps> = ({ tag }) => {
   return (
     <Link
+      aria-label={tag}
       className="flex max-w-[14rem] m-1 text-lg text-slate-400 w-auto btn capitalize"
       href={`/tags/${tag}`}
       onClick={(e) => {

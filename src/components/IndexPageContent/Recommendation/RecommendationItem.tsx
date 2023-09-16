@@ -43,6 +43,7 @@ const RecommendationItem: React.FC<RecommendationItemProps> = ({
         <span>{index + 1}</span>
       </div>
       <Link
+        aria-label={`${game.title}`}
         href={`/games/${game.id}`}
         onClick={() => {
           setGameStateValue((prev) => ({

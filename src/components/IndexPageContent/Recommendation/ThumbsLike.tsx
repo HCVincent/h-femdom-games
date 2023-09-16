@@ -108,8 +108,8 @@ const ThumbsLike: React.FC<ThumbsLikeProps> = ({
           </svg>
         )}
       </div>
-      <button
-        className="flex  text-white justify-end items-end transition-all hover:scale-110 mr-2"
+      <div
+        className="flex  text-white justify-end items-end transition-all hover:scale-110 mr-2 cursor-pointer"
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
@@ -119,6 +119,7 @@ const ThumbsLike: React.FC<ThumbsLikeProps> = ({
         {userCollectionValue === game.id ? (
           <FaHeart
             className="w-12 h-12"
+            name=""
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
@@ -135,7 +136,7 @@ const ThumbsLike: React.FC<ThumbsLikeProps> = ({
             }}
           />
         )}
-      </button>
+      </div>
       {game.address && (
         <div className="flex justify-center items-center cursor-pointer">
           <div
