@@ -44,7 +44,6 @@ const RecommendationItem: React.FC<RecommendationItemProps> = ({
       </div>
       <Link
         href={`/games/${game.id}`}
-        target="_blank"
         onClick={() => {
           setGameStateValue((prev) => ({
             ...prev,

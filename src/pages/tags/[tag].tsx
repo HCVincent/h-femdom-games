@@ -2,6 +2,7 @@ import GamesVerticalList from "@/components/GamesLists/GamesVerticalList/GamesVe
 import PageContent from "@/components/Layout/PageContent";
 import useGames from "@/hooks/useGames";
 import { useRouter } from "next/router";
+import Script from "next/script";
 import React, { useEffect, useState } from "react";
 
 const TagPage: React.FC = () => {
@@ -27,7 +28,7 @@ const TagPage: React.FC = () => {
     handleOnReadGamesByTag();
   }, [tag]);
   return (
-    <div className="flex w-full">
+    <div className="flex w-full justify-center items-center">
       <PageContent>
         <div className="justify-start w-full">
           <div className="w-full">
@@ -39,7 +40,15 @@ const TagPage: React.FC = () => {
             )}
           </div>
         </div>
-        <>advertisement</>
+        <div className="flex w-full h-full justify-center items-center">
+          <Script
+            async
+            type="application/javascript"
+            src="https://a.magsrv.com/ad-provider.js"
+          ></Script>
+          <ins className="eas6a97888e" data-zoneid="5078966"></ins>
+          <Script id="tags-sticky-banner">{`(AdProvider = window.AdProvider || []).push({"serve": {}});`}</Script>
+        </div>
       </PageContent>
     </div>
   );

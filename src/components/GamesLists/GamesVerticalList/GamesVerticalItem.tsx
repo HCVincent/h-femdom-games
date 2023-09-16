@@ -1,10 +1,12 @@
-import { Game } from "@/atoms/gamesAtom";
+import { Game, gameState } from "@/atoms/gamesAtom";
 import moment from "moment";
 import React, { useState } from "react";
 import questionmark from "../../../../public/questionmark.png";
 import Image from "next/image";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 import ThumbsLike from "@/components/IndexPageContent/Recommendation/ThumbsLike";
+import Link from "next/link";
+import { useSetRecoilState } from "recoil";
 
 type GamesVerticalItemProps = {
   game: Game;
@@ -32,6 +34,7 @@ const GamesVerticalItem: React.FC<GamesVerticalItemProps> = ({
 }) => {
   const [imageLoading, setImageLoading] = useState(true);
   const [like, setLike] = useState(false);
+  const setGameStateValue = useSetRecoilState(gameState);
   return (
     <div className="card card-side bg-base-100 shadow-xl m-8 p-2 hover:scale-105 transition-all ">
       <figure>
@@ -50,13 +53,17 @@ const GamesVerticalItem: React.FC<GamesVerticalItemProps> = ({
           onLoad={() => setImageLoading(false)}
         />
       </figure>
-      <div
-        className="card-body cursor-pointer"
+      <Link
+        href={`/games/${game.id}`}
         onClick={() => {
-          onSelectGame(game);
+          setGameStateValue((prev) => ({
+            ...prev,
+            selectedGame: game,
+          }));
         }}
+        className="card-body cursor-pointer"
       >
-        <h2 className="card-title">{game.title}</h2>
+        <h2 className="card-title capitalize">{game.title}</h2>
         <p>
           {game.createdAt &&
             `updated at ${moment(
@@ -72,7 +79,7 @@ const GamesVerticalItem: React.FC<GamesVerticalItemProps> = ({
             onVote={onVote}
           />
         </div>
-      </div>
+      </Link>
     </div>
   );
 };
