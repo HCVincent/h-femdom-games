@@ -12,6 +12,7 @@ import {
 } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import GamesGridItem from "./GamesGridItem";
+import { Game } from "@/atoms/gamesAtom";
 type GamesGridListProps = {};
 
 const GamesGridList: React.FC<GamesGridListProps> = () => {
@@ -50,17 +51,16 @@ const GamesGridList: React.FC<GamesGridListProps> = () => {
     if (newGameDocs.docs.length < limitedNumber) {
       setNoMoreLoad(true);
     }
-    const games = newGameDocs.docs.map((doc) => ({
+    const games: Game[] = newGameDocs.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
-    }));
+    })) as Game[];
     if (games.length < numOfGamesPerPage) {
       setNoMoreLoad(true);
     } else {
       setNoMoreLoad(false);
     }
     setLastVisible(newGameDocs.docs[newGameDocs.docs.length - 1]);
-    //@ts-ignore
     setGameStateValue((prev) => ({
       ...prev,
       games: [...prev.games, ...games], // Update the line to spread the games array
