@@ -13,13 +13,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import girls1 from "../../../public/girls/1.png";
 import Script from "next/script";
 
-declare global {
-  interface Window {
-    adsbyjuicy: {
-      push(args: any): void;
-    };
-  }
-}
 const GamePage: React.FC = () => {
   const router = useRouter();
   const [user] = useAuthState(auth);

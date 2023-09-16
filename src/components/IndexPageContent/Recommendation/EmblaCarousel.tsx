@@ -46,7 +46,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
   return (
     <div className="embla hover:scale-105 transition-all">
       <div className="embla__viewport" ref={emblaMainRef}>
-        <div className="embla__container">
+        <div className="embla__container  h-[540px]">
           {slides &&
             slides.map((game, index) => (
               <RecommendationItem

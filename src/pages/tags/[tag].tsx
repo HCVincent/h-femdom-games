@@ -4,29 +4,36 @@ import useGames from "@/hooks/useGames";
 import { useRouter } from "next/router";
 import Script from "next/script";
 import React, { useEffect, useState } from "react";
-
-const TagPage: React.FC = () => {
-  const router = useRouter();
-  const { tag } = router.query;
+//@ts-ignore
+import safeJsonStringify from "safe-json-stringify";
+import { GetServerSidePropsContext } from "next";
+import {
+  query,
+  collection,
+  orderBy,
+  where,
+  getDocs,
+  DocumentData,
+  QueryDocumentSnapshot,
+  Query,
+} from "firebase/firestore";
+import { firestore } from "@/firebase/clientApp";
+import { Game } from "@/atoms/gamesAtom";
+type TagPageProps = {
+  documentSnapShot: QueryDocumentSnapshot<DocumentData>;
+  games: Game[];
+  tag: string;
+};
+const TagPage: React.FC<TagPageProps> = ({ games, tag }) => {
+  const { setGameStateValue, gameStateValue } = useGames();
   const [loading, setLoading] = useState(false);
-  const { readGamesByTag, gameStateValue } = useGames();
-  const handleOnReadGamesByTag = async () => {
-    setLoading(true);
-    try {
-      if (tag) {
-        await readGamesByTag(tag.toString());
-      } else {
-        throw new Error(`Sorry, the page is not ready`);
-      }
-    } catch (error) {
-      console.log("handleOnReadGamesByTag error", error);
-    }
-    setLoading(false);
-  };
 
   useEffect(() => {
-    handleOnReadGamesByTag();
-  }, [tag]);
+    setGameStateValue((prev) => ({
+      ...prev,
+      gamesInTag: games as Game[],
+    }));
+  }, []);
   return (
     <div className="flex w-full justify-center items-center">
       <PageContent>
@@ -53,4 +60,30 @@ const TagPage: React.FC = () => {
     </div>
   );
 };
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  try {
+    context.res.setHeader(
+      "Cache-Control",
+      "public, s-maxage=60, stale-while-revalidate=59"
+    );
+    const tag = context.query.tag;
+    const gameQuery = query(
+      collection(firestore, "games"),
+      orderBy("updatedAt", "desc"),
+      where("tags", "array-contains", tag)
+    );
+
+    const gameDocs = await getDocs(gameQuery);
+    const games = gameDocs.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+
+    return {
+      props: {
+        games: JSON.parse(safeJsonStringify(games)),
+        tag: JSON.parse(safeJsonStringify(tag)),
+      },
+    };
+  } catch (error) {
+    console.log("getServerSideProps error", error);
+  }
+}
 export default TagPage;

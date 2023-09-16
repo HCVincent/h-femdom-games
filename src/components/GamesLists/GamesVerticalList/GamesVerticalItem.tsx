@@ -7,6 +7,7 @@ import { FaRegHeart, FaHeart } from "react-icons/fa";
 import ThumbsLike from "@/components/IndexPageContent/Recommendation/ThumbsLike";
 import Link from "next/link";
 import { useSetRecoilState } from "recoil";
+import TagsCardList from "@/components/Tags/TagsCardList";
 
 type GamesVerticalItemProps = {
   game: Game;
@@ -36,8 +37,17 @@ const GamesVerticalItem: React.FC<GamesVerticalItemProps> = ({
   const [like, setLike] = useState(false);
   const setGameStateValue = useSetRecoilState(gameState);
   return (
-    <div className="card card-side bg-base-100 shadow-xl m-8 p-2 hover:scale-105 transition-all ">
-      <figure>
+    <Link
+      href={`/games/${game.id}`}
+      onClick={() => {
+        setGameStateValue((prev) => ({
+          ...prev,
+          selectedGame: game,
+        }));
+      }}
+      className="card card-side bg-base-100 shadow-xl m-8 p-2 hover:scale-105 transition-all "
+    >
+      <figure className="flex flex-1 bg-black  ">
         {imageLoading && (
           <div className="flex w-full h-full items-center justify-center">
             <span className="loading loading-spinner loading-lg"></span>
@@ -46,23 +56,17 @@ const GamesVerticalItem: React.FC<GamesVerticalItemProps> = ({
 
         <Image
           src={game.coverImage ? game.coverImage : questionmark.src}
-          alt="cover"
-          className="w-80 h-full object-cover rounded-lg "
+          alt={`cover${game.id}`}
+          className="rounded-lg"
           width={100}
-          height={50}
+          height={100}
           onLoad={() => setImageLoading(false)}
         />
-      </figure>
-      <Link
-        href={`/games/${game.id}`}
-        onClick={() => {
-          setGameStateValue((prev) => ({
-            ...prev,
-            selectedGame: game,
-          }));
-        }}
-        className="card-body cursor-pointer"
-      >
+      </figure>{" "}
+      <div className="flex flex-1">
+        {game.tags && <TagsCardList tags={game.tags} />}
+      </div>
+      <div className="card-body cursor-pointer flex flex-1">
         <h2 className="card-title capitalize">{game.title}</h2>
         <p>
           {game.createdAt &&
@@ -79,8 +83,8 @@ const GamesVerticalItem: React.FC<GamesVerticalItemProps> = ({
             onVote={onVote}
           />
         </div>
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 };
 export default GamesVerticalItem;

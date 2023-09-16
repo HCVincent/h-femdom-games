@@ -17,6 +17,10 @@ export default function App({ Component, pageProps }: AppProps) {
           name={process.env.NEXT_PUBLIC_JUICYADS_NAME}
           content={process.env.NEXT_PUBLIC_JUICYADS_CONTENT}
         />
+        <meta
+          name="description"
+          content="You can download female dominance type of games, animes and comics for free"
+        />
       </Head>
       <RecoilRoot>
         <div className="min-w-[450px]">

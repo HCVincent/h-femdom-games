@@ -19,9 +19,6 @@ type RecommendationListsProps = {};
 const OPTIONS: EmblaOptionsType = { loop: true };
 
 const RecommendationLists: React.FC<RecommendationListsProps> = () => {
-  const { readGames } = useGames();
-
-  let next: Query<DocumentData>;
   const [loading, setLoading] = useState(false);
   const { gameStateValue, setGameStateValue } = useGames();
 
