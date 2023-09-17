@@ -137,6 +137,8 @@ const Add: React.FC<AddProps> = () => {
       setSelectedVideo("");
       setSelectedImagesGroup([]);
       setTags([]);
+
+      setCanAdd(false);
     } catch (error: any) {
       console.log("handleUploadGame error", error.message);
       setError(error);
@@ -214,7 +216,6 @@ const Add: React.FC<AddProps> = () => {
         gameTags={gameStateValue.gameTags}
         setTags={setTags}
         tags={tags}
-        currentGameTags={[]}
       />
       {addComplete && (
         <div className="alert alert-success">
