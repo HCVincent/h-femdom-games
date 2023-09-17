@@ -94,6 +94,7 @@ const GamePage: React.FC = () => {
           )}
         </div>
       </PageContent>
+      {/* Desktop Fullpage Interstitial */}
       <Script
         type="application/javascript"
         data-idzone="5077870"

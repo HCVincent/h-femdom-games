@@ -111,7 +111,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                       <div className="flex w-auto h-10">
                         <Image
                           src={logo}
-                          alt="home"
+                          alt=""
                           className="w-full h-full"
                         ></Image>
                         <span className="flex normal-case items-center justify-center ml-4 text-4xl">
@@ -139,14 +139,14 @@ const Navbar: React.FC<NavbarProps> = () => {
                   ) : (
                     <>
                       <label
-                        htmlFor="my_modal_auth"
+                        htmlFor="my_modal_auth_mobile"
                         className="btn justify-start items-center"
                         onClick={handleLogin}
                       >
                         Login
                       </label>
                       <label
-                        htmlFor="my_modal_auth"
+                        htmlFor="my_modal_auth_mobile"
                         className="btn justify-start items-center"
                         onClick={handleSignUp}
                       >
@@ -155,7 +155,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                       {/* Put this part before </body> tag */}
                       <input
                         type="checkbox"
-                        id="my_modal_auth"
+                        id="my_modal_auth_mobile"
                         className="modal-toggle"
                         checked={modalState.open}
                         onChange={() => {}}
@@ -175,7 +175,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                         </div>
                         <label
                           className="modal-backdrop"
-                          htmlFor="my_modal_auth"
+                          htmlFor="my_modal_auth_mobile"
                           onClick={() =>
                             setModalState((prev) => ({
                               ...prev,
@@ -197,7 +197,7 @@ const Navbar: React.FC<NavbarProps> = () => {
             onClick={() => router.push("/")}
           >
             <div className="flex w-auto h-10">
-              <Image src={logo} alt="home" className="lg:w-full h-full"></Image>
+              <Image src={logo} alt="" className="lg:w-full h-full"></Image>
               <span className="normal-case">Home</span>
             </div>
           </button>

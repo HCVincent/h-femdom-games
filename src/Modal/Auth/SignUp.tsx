@@ -91,7 +91,7 @@ const SignUp = () => {
         </div>
       </form>
 
-      <div className="flex justify-end w-full">
+      <div className="flex justify-end w-full text-lg">
         <p>new here?</p>
         <button
           className="text-red-500  btn-ghost capitalize"

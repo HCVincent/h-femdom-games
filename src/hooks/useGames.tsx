@@ -359,7 +359,10 @@ const useGames = () => {
           }
         }
         if (game.coverImage) {
-          const coverImageRef = ref(storage, `games/${game.id}/coverImage`);
+          const coverImageRef = ref(
+            storage,
+            `games/${game.id}/coverImage/coverImage`
+          );
 
           listAll(coverImageRef)
             .then(async (listResults) => {

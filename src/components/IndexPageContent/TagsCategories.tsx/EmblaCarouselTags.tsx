@@ -54,7 +54,7 @@ const EmblaCarouselTags: React.FC<PropType> = (props) => {
 
   const imageByIndex = (index: number): string => images[index % images.length];
   return (
-    <div className="embla">
+    <div className="embla  h-[16rem]">
       <div className="embla__viewport" ref={emblaMainRef}>
         <div className="embla__container">
           {slides.map((string, index) => (

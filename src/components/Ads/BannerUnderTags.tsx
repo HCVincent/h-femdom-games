@@ -5,15 +5,15 @@ type BannerUnderTagsProps = {};
 
 const BannerUnderTags: React.FC<BannerUnderTagsProps> = () => {
   return (
-    <div className="hidden lg:flex w-full justify-center items-center mt-10">
-      <div id="adsBanner-exoclick-undertags" className="w-[900px] h-[250px]">
+    <div className="hidden lg:flex w-full h-[250px] justify-center items-center mt-20 ">
+      <div id="adsBanner-exoclick-undertags" className="w-[900px] h-[250px] ">
         <Script
           type="application/javascript"
           async
           src="https://a.magsrv.com/ad-provider.js"
         ></Script>
         <ins
-          className="eas6a97888e"
+          className="eas6a97888e w-[900px] h-[250px]"
           data-zoneid="5078370"
           data-keywords="cartoon,games,foot,foot fetish,femdom,female dominance"
         ></ins>

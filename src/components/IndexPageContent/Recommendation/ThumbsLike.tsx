@@ -1,9 +1,8 @@
 import { Game } from "@/atoms/gamesAtom";
-import React, { useEffect, useState } from "react";
-import { FaHeart, FaRegHeart } from "react-icons/fa";
-import { BsDownload } from "react-icons/bs";
-import Link from "next/link";
 import useGames from "@/hooks/useGames";
+import React, { useState } from "react";
+import { BsDownload } from "react-icons/bs";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 type ThumbsLikeProps = {
   userVoteValue?: number;
