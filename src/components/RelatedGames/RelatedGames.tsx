@@ -22,7 +22,7 @@ const RelatedGames: React.FC<RelatedGamesProps> = ({ gameTag, gameId }) => {
     handleOnReadGames();
   }, []);
   return (
-    <div className="flex flex-col justify-center items-center mt-10">
+    <div className="flex flex-col justify-center items-center mt-10 w-full h-[1100px]">
       <span className="text-4xl font-bold">More Games</span>
       <div className="flex flex-col justify-center items-center">
         {gameStateValue.gamesInTag.map((game) => (
@@ -31,14 +31,13 @@ const RelatedGames: React.FC<RelatedGamesProps> = ({ gameTag, gameId }) => {
             key={game.id}
             onClick={() => onSelectGame(game)}
           >
-            <figure>
-              <Image
-                width={500}
-                height={300}
-                src={game.coverImage ? game.coverImage : default_cover}
-                alt={game.title}
-              />
-            </figure>
+            <Image
+              width={300}
+              height={200}
+              src={game.coverImage ? game.coverImage : default_cover}
+              alt={game.title}
+              className="w-96 h-72"
+            />
             <div className="card-body">
               <h2 className="card-title capitalize">{game.title}</h2>
             </div>

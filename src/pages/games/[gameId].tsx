@@ -51,7 +51,7 @@ const GamePage: React.FC = () => {
           )}
         </div>
         <div className=" w-full  lg:flex lg:flex-col pl-5">
-          <div className="relative h-[50rem] z-10">
+          <div className="relative h-[50rem] z-10 top-0">
             <Image
               alt=""
               priority
