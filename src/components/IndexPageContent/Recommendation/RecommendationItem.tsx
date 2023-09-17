@@ -51,7 +51,7 @@ const RecommendationItem: React.FC<RecommendationItemProps> = ({
             selectedGame: game,
           }));
         }}
-        className="flex h-[480px] items-center bg-black align-middle"
+        className="flex h-[480px] items-center bg-black align-middle justify-center "
       >
         <Image
           /* @ts-ignore */
@@ -61,7 +61,7 @@ const RecommendationItem: React.FC<RecommendationItemProps> = ({
           height={200}
           alt=""
           sizes="100vw"
-          className="embla__slide__img inline-block object-cover w-full h-auto lg:h-[480px] cursor-pointer"
+          className="embla__slide__img inline-block object-fill w-auto h-auto lg:h-[480px] cursor-pointer"
         />
       </Link>
 

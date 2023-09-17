@@ -7,16 +7,16 @@ type TagCardProps = {
 
 const TagCard: React.FC<TagCardProps> = ({ tag }) => {
   return (
-    <Link
+    <div
       aria-label={tag}
       className="flex max-w-[14rem] m-1 text-lg text-slate-400 w-auto btn capitalize"
-      href={`/tags/${tag}`}
       onClick={(e) => {
         e.stopPropagation();
+        window.open(`/tags/${tag}`, "_blank");
       }}
     >
       {tag}
-    </Link>
+    </div>
   );
 };
 export default TagCard;
