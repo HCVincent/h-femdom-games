@@ -39,6 +39,7 @@ const GameCover: React.FC<GameCoverProps> = ({ coverImage, imagesGroup }) => {
                 sizes="100vw"
                 className="flex object-cover w-full h-[420px] cursor-pointer rounded-md"
               ></Image>
+
               {imagesGroup.map((image, index) => (
                 <Image
                   key={index}
@@ -46,10 +47,10 @@ const GameCover: React.FC<GameCoverProps> = ({ coverImage, imagesGroup }) => {
                   alt={`image${index}`}
                   onClick={() => openImageViewer(index)}
                   src={image}
-                  width={0}
-                  height={0}
+                  width={300}
+                  height={200}
                   sizes="100vw"
-                  className="flex object-cover w-full h-[420px] cursor-pointer rounded-md"
+                  className="flex  w-[800px] h-[420px] cursor-pointer rounded-md"
                 />
               ))}
             </div>

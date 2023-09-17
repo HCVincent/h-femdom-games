@@ -76,7 +76,12 @@ const GamePage: React.FC = () => {
                 async
                 src="https://poweredby.jads.co/js/jads.js"
               ></Script>
-              <ins id="1033726" data-width="158" data-height="180"></ins>
+              <ins
+                id="1033726"
+                data-width="158"
+                data-height="180"
+                className="w-[158px] h-[180px]"
+              ></ins>
               <Script
                 id="window.adsbyjuicy-banner"
                 type="text/javascript"
