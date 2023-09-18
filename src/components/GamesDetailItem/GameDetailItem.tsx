@@ -62,7 +62,7 @@ const GameDetailItem: React.FC<GameDetailItemProps> = ({ game, user }) => {
         ></ins>
         <Script id="window.adsbyjuicy-banner-detail">{`(AdProvider = window.AdProvider || []).push({"serve": {}});`}</Script>
       </div>
-      <span className="mt-10">{game.body}</span>
+      <span className="mt-10 line">{game.body}</span>
       <Comments game={game} user={user} />
     </div>
   );

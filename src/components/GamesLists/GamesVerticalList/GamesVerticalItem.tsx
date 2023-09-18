@@ -63,25 +63,25 @@ const GamesVerticalItem: React.FC<GamesVerticalItemProps> = ({
           onLoad={() => setImageLoading(false)}
         />
       </figure>{" "}
-      <div className="flex flex-1">
+      <div className="flex flex-1 flex-col">
         {game.tags && <TagsCardList tags={game.tags} />}
-      </div>
-      <div className="card-body cursor-pointer flex flex-1">
-        <h2 className="card-title capitalize">{game.title}</h2>
-        <p>
-          {game.createdAt &&
-            `updated at ${moment(
-              new Date(game.createdAt.seconds * 1000)
-            ).fromNow()}`}
-        </p>
-        <div className="card-actions justify-end">
-          <ThumbsLike
-            userVoteValue={userVoteValue}
-            game={game}
-            userCollectionValue={userCollectionValue}
-            onCollect={onCollect}
-            onVote={onVote}
-          />
+        <div className="card-body cursor-pointer flex flex-1">
+          <h2 className="card-title capitalize">{game.title}</h2>
+          <p>
+            {game.createdAt &&
+              `updated at ${moment(
+                new Date(game.createdAt.seconds * 1000)
+              ).fromNow()}`}
+          </p>
+          <div className="card-actions justify-end">
+            <ThumbsLike
+              userVoteValue={userVoteValue}
+              game={game}
+              userCollectionValue={userCollectionValue}
+              onCollect={onCollect}
+              onVote={onVote}
+            />
+          </div>
         </div>
       </div>
     </Link>

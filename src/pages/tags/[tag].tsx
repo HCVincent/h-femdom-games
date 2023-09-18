@@ -99,7 +99,7 @@ const TagPage: React.FC<TagPageProps> = ({
   return (
     <div className="flex w-full justify-center items-center">
       <PageContent>
-        <div className="justify-start w-full">
+        <div className="justify-start w-full  h-[280rem]">
           <div className="w-full">
             <span className="px-10 text-2xl">{tag} Games</span>
             {loading ? (
@@ -127,14 +127,14 @@ const TagPage: React.FC<TagPageProps> = ({
                 <span>this is a bottom line</span>
               </div>
             ) : (
-              <div className="flex w-full h-[6rem] justify-center">
+              <div className="flex w-full justify-center">
                 {loadMoreLoading ? (
-                  <div className="flex w-full h-full items-center justify-center">
+                  <div className="flex w-full  items-center justify-center">
                     <span className="loading loading-spinner loading-lg"></span>
                   </div>
                 ) : (
                   <button
-                    className="btn btn-ghost mt-4 w-full h-full normal-case text-4xl"
+                    className="btn btn-ghost mt-4 w-full  normal-case text-4xl"
                     onClick={loadMore}
                   >
                     Load More
@@ -144,7 +144,7 @@ const TagPage: React.FC<TagPageProps> = ({
             )}
           </div>
         </div>
-        <div className="flex w-full h-full justify-center items-center">
+        <div className="flex w-full  justify-center items-center  h-[80rem] lg:h-[280rem]">
           <Script
             async
             type="application/javascript"
