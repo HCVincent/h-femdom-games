@@ -3,6 +3,9 @@ const nextConfig = {
   images: {
     domains: ["firebasestorage.googleapis.com"],
   },
+  experimental: {
+    scrollRestoration: true,
+  },
   async headers() {
     return [
       {

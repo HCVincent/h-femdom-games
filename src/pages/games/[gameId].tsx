@@ -18,7 +18,6 @@ const GamePage: React.FC = () => {
   const [user] = useAuthState(auth);
   const { gameStateValue, setGameStateValue } = useGames();
   const game: Game = gameStateValue.selectedGame!;
-
   const fetchGame = async (gameId: string) => {
     try {
       const gameDocRef = doc(firestore, "games", gameId);

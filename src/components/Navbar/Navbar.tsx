@@ -15,6 +15,7 @@ import logo from "../../../public/logo_icon.png";
 import SearchInput from "./RightContent/SearchInput";
 import { Game } from "@/atoms/gamesAtom";
 import SearchResultList from "./RightContent/SearchResultList";
+import Link from "next/link";
 
 type NavbarProps = {};
 
@@ -104,9 +105,9 @@ const Navbar: React.FC<NavbarProps> = () => {
                 <ul>
                   {/* Sidebar content here */}
                   <li>
-                    <button
+                    <Link
+                      href={"/"}
                       className="flex lg:text-4xl  btn btn-ghost justify-start"
-                      onClick={() => router.push("/")}
                     >
                       <div className="flex w-auto h-10">
                         <Image
@@ -118,7 +119,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                           Home
                         </span>
                       </div>
-                    </button>
+                    </Link>
                   </li>
                   <li>
                     <SearchInput

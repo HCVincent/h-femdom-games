@@ -49,6 +49,7 @@ const GameItem: React.FC<GameItemProps> = ({ game }) => {
           video: game.video ? game.video : "",
           imagesGroup: game.imagesGroup ? game.imagesGroup : [],
           recommend: true,
+          tags: game.tags,
           createdAt: serverTimestamp() as Timestamp,
           updatedAt: serverTimestamp() as Timestamp,
         };
