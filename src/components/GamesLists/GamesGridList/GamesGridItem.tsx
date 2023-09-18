@@ -37,6 +37,7 @@ const GamesGridItem: React.FC<GamesGridItemProps> = ({
     <div className="flex w-[28rem]">
       <Link
         aria-label={`${game.title}`}
+        target="_blank"
         href={`/games/${game.id}`}
         onClick={() => {
           setGameStateValue((prev) => ({

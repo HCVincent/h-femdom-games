@@ -12,6 +12,7 @@ const TagCard: React.FC<TagCardProps> = ({ tag }) => {
       className="flex max-w-[14rem] m-1 text-lg text-slate-400 w-auto btn capitalize"
       onClick={(e) => {
         e.stopPropagation();
+        e.preventDefault();
         window.open(`/tags/${tag}`, "_blank");
       }}
     >

@@ -1,7 +1,6 @@
 import React, { createContext, useEffect } from "react";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
-import Script from "next/script";
 import dynamic from "next/dynamic";
 const JuicyBanner = dynamic(() => import("../Ads/JuicyBanner"));
 const JuicyMobileImage = dynamic(() => import("../Ads/JuicyMobileImage"));
