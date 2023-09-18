@@ -61,7 +61,7 @@ const RecommendationItem: React.FC<RecommendationItemProps> = ({
           height={200}
           alt=""
           sizes="100vw"
-          className="embla__slide__img inline-block object-fill w-auto h-full cursor-pointer"
+          className="embla__slide__img inline-block object-cover lg:object-fill w-full h-auto lg:w-auto lg:h-full cursor-pointer"
         />
       </Link>
 

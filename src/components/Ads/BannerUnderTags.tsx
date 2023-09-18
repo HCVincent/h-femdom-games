@@ -13,11 +13,14 @@ const BannerUnderTags: React.FC<BannerUnderTagsProps> = () => {
           src="https://a.magsrv.com/ad-provider.js"
         ></Script>
         <ins
-          className="eas6a97888e w-[900px] h-[250px]"
+          className="eas6a97888e "
           data-zoneid="5078370"
           data-keywords="cartoon,games,foot,foot fetish,femdom,female dominance"
         ></ins>
-        <Script id="window.adsbyjuicy-banner-undertags">{`(AdProvider = window.AdProvider || []).push({"serve": {}});`}</Script>
+        <Script
+          id="window.adsbyjuicy-banner-undertags"
+          className="w-[900px] h-[250px]"
+        >{`(AdProvider = window.AdProvider || []).push({"serve": {}});`}</Script>
       </div>
     </div>
   );
