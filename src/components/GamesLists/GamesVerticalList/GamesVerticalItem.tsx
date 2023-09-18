@@ -57,9 +57,10 @@ const GamesVerticalItem: React.FC<GamesVerticalItemProps> = ({
         <Image
           src={game.coverImage ? game.coverImage : questionmark.src}
           alt={`cover${game.id}`}
+          priority
           className="rounded-lg"
-          width={100}
-          height={100}
+          width={200}
+          height={200}
           onLoad={() => setImageLoading(false)}
         />
       </figure>{" "}
