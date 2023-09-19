@@ -5,7 +5,7 @@ type FooterProps = {};
 
 const Footer: React.FC<FooterProps> = () => {
   return (
-    <footer className="footer p-10 bg-neutral text-neutral-content mt-10">
+    <footer className="footer p-10 bg-neutral text-neutral-content mt-10 text-white">
       <p className="text-lg max-w-[20rem]">
         {`AcgFemdom is a website you can download female dominance type of games, animes and comics for
         free. We will keep on updating contents.`}

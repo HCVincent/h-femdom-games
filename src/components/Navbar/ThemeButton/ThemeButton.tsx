@@ -3,20 +3,15 @@ import React from "react";
 type ThemeButtonProps = {
   toggleTheme: () => void;
   theme: string;
-  buttonId?: string;
 };
 
-const ThemeButton: React.FC<ThemeButtonProps> = ({
-  toggleTheme,
-  theme,
-  buttonId,
-}) => {
+const ThemeButton: React.FC<ThemeButtonProps> = ({ toggleTheme, theme }) => {
   return (
     <div className="lg:flex lg:items-center mr-4 hover:bg-base-300 hover:rounded p-2">
       <label className="swap swap-rotate" htmlFor="theme-checkbox">
         {""}
         <input
-          id={`${buttonId}-theme-checkbox`}
+          id={`theme-checkbox`}
           type="checkbox"
           checked={theme !== "dark"}
           onChange={toggleTheme}
