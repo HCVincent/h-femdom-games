@@ -1,13 +1,17 @@
 import Script from "next/script";
-import React from "react";
+import React, { useEffect } from "react";
 
 type JuicyBannerProps = {};
 
 const JuicyBanner: React.FC<JuicyBannerProps> = () => {
-  const juicyAdsBanner = document.getElementById("window.adsbyjuicy-banner");
-  juicyAdsBanner!.addEventListener("touchstart", function () {}, {
-    passive: true,
-  });
+  useEffect(() => {
+    const juicyAdsBanner = document.getElementById("window.adsbyjuicy-banner");
+    if (juicyAdsBanner) {
+      juicyAdsBanner.addEventListener("touchstart", function () {}, {
+        passive: true,
+      });
+    }
+  }, []);
   return (
     <>
       <Script

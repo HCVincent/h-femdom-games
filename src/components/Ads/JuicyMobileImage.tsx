@@ -1,13 +1,17 @@
 import Script from "next/script";
-import React from "react";
+import React, { useEffect } from "react";
 
 type JuicyMobileImageProps = {};
 
 const JuicyMobileImage: React.FC<JuicyMobileImageProps> = () => {
-  const juicyAdsImage = document.getElementById("window.adsbyjuicy-image");
-  juicyAdsImage!.addEventListener("touchstart", function () {}, {
-    passive: true,
-  });
+  useEffect(() => {
+    const juicyAdsBanner = document.getElementById("window.adsbyjuicy-banner");
+    if (juicyAdsBanner) {
+      juicyAdsBanner.addEventListener("touchstart", function () {}, {
+        passive: true,
+      });
+    }
+  }, []);
   return (
     <>
       {" "}
