@@ -4,20 +4,30 @@ import React from "react";
 type JuicyBannerProps = {};
 
 const JuicyBanner: React.FC<JuicyBannerProps> = () => {
+  const juicyAdsBanner = document.getElementById("window.adsbyjuicy-banner");
+  juicyAdsBanner!.addEventListener("touchstart", function () {}, {
+    passive: true,
+  });
   return (
     <>
       <Script
         type="text/javascript"
         data-cfasync="false"
+        title="juicyBanner"
         async
         src="https://poweredby.jads.co/js/jads.js"
       ></Script>
-      <ins id="1033717" data-width="908" data-height="270"></ins>
+      <ins
+        id="1033717"
+        data-width="908"
+        data-height="270"
+        title="juicyBanner"
+      ></ins>
       <Script
         id="window.adsbyjuicy-banner"
         type="text/javascript"
-        data-cfasync="false"
         title="juicyBanner"
+        data-cfasync="false"
         async
       >{`(adsbyjuicy = window.adsbyjuicy || []).push({'adzone':1033717});`}</Script>
     </>

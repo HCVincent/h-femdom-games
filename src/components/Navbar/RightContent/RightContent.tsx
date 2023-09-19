@@ -43,7 +43,11 @@ const RightContent: React.FC<RightContentProps> = ({
       </div>
 
       <div className="lg:flex lg:items-center">
-        <ThemeButton toggleTheme={toggleTheme} theme={theme} />
+        <ThemeButton
+          toggleTheme={toggleTheme}
+          theme={theme}
+          buttonId="themeNavbar"
+        />
       </div>
       <div className="lg:flex lg:items-center">
         {user ? <Avatar user={user} /> : <AuthModal />}

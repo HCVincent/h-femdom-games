@@ -4,6 +4,10 @@ import React from "react";
 type JuicyMobileImageProps = {};
 
 const JuicyMobileImage: React.FC<JuicyMobileImageProps> = () => {
+  const juicyAdsImage = document.getElementById("window.adsbyjuicy-image");
+  juicyAdsImage!.addEventListener("touchstart", function () {}, {
+    passive: true,
+  });
   return (
     <>
       {" "}
