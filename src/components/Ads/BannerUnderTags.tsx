@@ -13,7 +13,7 @@ const BannerUnderTags: React.FC<BannerUnderTagsProps> = () => {
           src="https://a.magsrv.com/ad-provider.js"
         ></Script>
         <ins
-          className="eas6a97888e "
+          className="eas6a97888e"
           data-zoneid="5078370"
           data-keywords="cartoon,games,foot,foot fetish,femdom,female dominance"
         ></ins>
