@@ -145,7 +145,7 @@ const ThumbsLike: React.FC<ThumbsLikeProps> = ({
             }}
             className="w-12 h-12 hover:scale-105"
           >
-            <BsDownload className="w-12 h-12"></BsDownload>
+            <BsDownload className="w-12 h-12 text-white"></BsDownload>
           </div>
         </div>
       )}

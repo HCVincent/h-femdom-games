@@ -12,7 +12,12 @@ const JuicyBanner: React.FC<JuicyBannerProps> = () => {
         async
         src="https://poweredby.jads.co/js/jads.js"
       ></Script>
-      <ins id="1033717" data-width="908" data-height="270"></ins>
+      <ins
+        id="1033717"
+        data-width="908"
+        data-height="270"
+        title="juicyBanner"
+      ></ins>
       <Script
         id="window.adsbyjuicy-banner"
         type="text/javascript"

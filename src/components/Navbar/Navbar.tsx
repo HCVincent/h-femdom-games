@@ -134,7 +134,11 @@ const Navbar: React.FC<NavbarProps> = () => {
                   </li>
                 </ul>
                 <div className="flex flex-col mb-10 text-4xl">
-                  <ThemeButton toggleTheme={toggleTheme} theme={theme} />
+                  <ThemeButton
+                    toggleTheme={toggleTheme}
+                    theme={theme}
+                    buttonId="sidebar"
+                  />
                   {isLogin ? (
                     <SignOut />
                   ) : (
