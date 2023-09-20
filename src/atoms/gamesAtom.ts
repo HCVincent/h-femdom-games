@@ -19,7 +19,7 @@ export type Game = {
     numberOfComments?: number;
     tags?: string[];
     password?: string;
-    titleArray: string[]
+    titleArray?: string[]
 }
 
 
