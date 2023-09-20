@@ -68,6 +68,7 @@ const Add: React.FC<AddProps> = () => {
         createdAt: serverTimestamp() as Timestamp,
         updatedAt: serverTimestamp() as Timestamp,
         tags: tags,
+        titleArray: textInputs.title.toLowerCase().split(" "),
         password: textInputs.password,
       };
       const gameDocRef = await addDoc(collection(firestore, "games"), newGame);

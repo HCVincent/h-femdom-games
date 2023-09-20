@@ -26,12 +26,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <JuicyBanner />
       </div>
 
-      <div
-        id="adsContainer-mobile"
-        className="flex lg:hidden justify-center items-center mt-4"
-      >
-        <JuicyMobileImage />
-      </div>
       <Footer />
     </div>
   );
