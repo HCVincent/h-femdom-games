@@ -7,7 +7,7 @@ const JuicyMobileImage: React.FC<JuicyMobileImageProps> = () => {
   useEffect(() => {
     const juicyAdsBanner = document.getElementById("window.adsbyjuicy-banner");
     if (juicyAdsBanner) {
-      juicyAdsBanner.addEventListener("touchstart", function () {}, {
+      juicyAdsBanner.addEventListener("touchstart", (event: TouchEvent) => {}, {
         passive: true,
       });
     }
