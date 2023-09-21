@@ -11,10 +11,7 @@ function generateSiteMap(posts) {
        <loc>${URL}</loc>
      </url>
      <url>
-       <loc>${URL}/portfolio</loc>
-     </url>
-      <url>
-       <loc>${URL}/blog</loc>
+       <loc>${URL}/tags</loc>
      </url>
      ${posts
        .map(({ id }) => {
