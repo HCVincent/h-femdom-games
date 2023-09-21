@@ -57,7 +57,7 @@ const Home: React.FC<RecommendationListsProps> = ({
         <BannerUnderTags />
         <GamesGridList />
       </div>
-      <PopUnder />
+      {/* <PopUnder /> */}
     </div>
   );
 };
