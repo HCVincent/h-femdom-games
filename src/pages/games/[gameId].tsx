@@ -97,17 +97,6 @@ const GamePage: React.FC = () => {
           )}
         </div>
       </PageContent>
-      {/* Desktop Fullpage Interstitial */}
-      <Script
-        type="application/javascript"
-        data-idzone="5077870"
-        data-ad_frequency_count="1"
-        data-ad_frequency_period="60"
-        data-type="desktop"
-        data-browser_settings="1"
-        data-ad_trigger_method="3"
-        src="https://a.pemsrv.com/fp-interstitial.js"
-      ></Script>
     </div>
   );
 };

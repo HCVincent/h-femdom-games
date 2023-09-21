@@ -2,23 +2,24 @@ import GamesGridList from "@/components/GamesLists/GamesGridList/GamesGridList";
 import RecommendationLists from "@/components/IndexPageContent/Recommendation/RecommendationLists";
 import TagsCategories from "@/components/IndexPageContent/TagsCategories.tsx/TagsCategories";
 //@ts-ignore
-import safeJsonStringify from "safe-json-stringify";
+import { Game } from "@/atoms/gamesAtom";
+import FullPage from "@/components/Ads/FullPage";
+import { firestore } from "@/firebase/clientApp";
 import useGames from "@/hooks/useGames";
 import {
+  DocumentData,
+  QueryDocumentSnapshot,
   collection,
   getDocs,
   limit,
   orderBy,
   query,
-  DocumentData,
-  QueryDocumentSnapshot,
 } from "firebase/firestore";
-import React, { useEffect, useState } from "react";
 import { GetServerSidePropsContext } from "next";
-import { firestore } from "@/firebase/clientApp";
-import { Game } from "@/atoms/gamesAtom";
-import PopUnder from "@/components/Ads/PopUnder";
 import dynamic from "next/dynamic";
+import React, { useEffect } from "react";
+// @ts-ignore
+import safeJsonStringify from "safe-json-stringify";
 
 const BannerUnderTags = dynamic(
   () => import("@/components/Ads/BannerUnderTags")
@@ -57,6 +58,7 @@ const Home: React.FC<RecommendationListsProps> = ({
         <BannerUnderTags />
         <GamesGridList />
       </div>
+      <FullPage />
       {/* <PopUnder /> */}
     </div>
   );

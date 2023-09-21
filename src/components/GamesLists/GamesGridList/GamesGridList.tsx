@@ -123,7 +123,7 @@ const GamesGridList: React.FC<GamesGridListProps> = () => {
                 <span>this is a bottom line</span>
               </div>
             ) : (
-              <div className="flex w-full h-[6rem] justify-center">
+              <div className="flex w-full h-[6rem] justify-center mt-20 mb-20">
                 {loadMoreLoading ? (
                   <div className="flex w-full h-full items-center justify-center">
                     <span className="loading loading-spinner loading-lg"></span>
