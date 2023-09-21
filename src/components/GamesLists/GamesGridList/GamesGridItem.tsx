@@ -66,9 +66,9 @@ const GamesGridItem: React.FC<GamesGridItemProps> = ({
               {game.title}
             </h2>
             <span className="flex text-slate-500 text-sm">
-              {game.createdAt &&
+              {game.updatedAt &&
                 `updated at ${moment(
-                  new Date(game.createdAt.seconds * 1000)
+                  new Date(game.updatedAt.seconds * 1000)
                 ).fromNow()}`}
             </span>
 
