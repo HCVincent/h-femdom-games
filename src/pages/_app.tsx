@@ -11,7 +11,12 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <link rel="icon" href="/favicon.png" type="image/png" sizes="any" />
+        <link
+          rel="icon"
+          href="/favicon.ico?v=2"
+          type="image/x-icon"
+          sizes="any"
+        />
         <title>AcgFemdom</title>
         <meta
           name={process.env.NEXT_PUBLIC_JUICYADS_NAME}
