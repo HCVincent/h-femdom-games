@@ -4,12 +4,12 @@ import React, { useState } from "react";
 import SearchInput from "./SearchInput";
 import { Game } from "@/atoms/gamesAtom";
 import SearchResultList from "./SearchResultList";
-import AuthModal from "@/Modal/Auth/AuthModal";
 import ThemeButton from "../ThemeButton/ThemeButton";
 import Avatar from "./Avatar";
 
-// solving for
-// Error: There was an error while hydrating. Because the error happened outside of a Suspense boundary, the entire root will switch to client rendering.
+const AuthModal = dynamic(() => import("../../../Modal/Auth/AuthModal"), {
+  ssr: false,
+});
 
 type RightContentProps = {
   isLogin: boolean;

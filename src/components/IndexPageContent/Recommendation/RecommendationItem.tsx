@@ -54,16 +54,27 @@ const RecommendationItem: React.FC<RecommendationItemProps> = ({
         }}
         className="flex h-[480px] items-center bg-black align-middle justify-center "
       >
-        <Image
-          /* @ts-ignore */
-          src={game.coverImage ? game.coverImage : default_cover}
-          priority
-          width={200}
-          height={200}
-          alt=""
-          sizes="100vw"
-          className="embla__slide__img inline-block object-cover lg:object-fill w-full h-auto lg:w-auto lg:h-full cursor-pointer"
-        />
+        {index === 0 ? (
+          <Image
+            /* @ts-ignore */
+            src={game.coverImage ? game.coverImage : default_cover}
+            priority
+            width={200}
+            height={200}
+            alt=""
+            sizes="100vw"
+            className="embla__slide__img inline-block object-cover lg:object-fill w-full h-auto lg:w-auto lg:h-full cursor-pointer"
+          />
+        ) : (
+          <Image
+            src={game.coverImage ? game.coverImage : default_cover}
+            width={200}
+            height={200}
+            alt=""
+            sizes="100vw"
+            className="embla__slide__img inline-block object-cover lg:object-fill w-full h-auto lg:w-auto lg:h-full cursor-pointer"
+          />
+        )}
       </Link>
 
       <div className="flex flex-1 h-full items-center justify-between px-8">
