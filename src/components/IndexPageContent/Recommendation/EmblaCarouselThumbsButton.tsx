@@ -22,6 +22,9 @@ export const Thumb: React.FC<PropType> = (props) => {
         className="embla-thumbs__slide__button relative"
         type="button"
       >
+        {/* <div className="embla-thumbs__slide__number absolute end-2 top-2 w-5 h-5 rounded-full bg-slate-900">
+          <span className="text-slate-500">{index + 1}</span>
+        </div> */}
         <Image
           className={`flex object-cover h-full w-auto embla-thumbs__slide__img  ${
             selected ? "" : "opacity-50"
