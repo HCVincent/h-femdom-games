@@ -155,6 +155,21 @@ const useGames = () => {
     }
   };
 
+  const readGamesBySiteMap = async () => {
+    try {
+      const gameQuery = query(
+        collection(firestore, "games"),
+        orderBy("title", "asc")
+      );
+
+      const gameDocs = await getDocs(gameQuery);
+      const games = gameDocs.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      return games as Game[];
+    } catch (error) {
+      console.log("readGames error", error);
+    }
+  };
+
   const onUpdateGameRec = async (
     firebaseCollection: string,
     gameId: string,
@@ -658,6 +673,7 @@ const useGames = () => {
     onVote,
     onCollect,
     onSelectDownload,
+    readGamesBySiteMap,
   };
 };
 export default useGames;
