@@ -13,6 +13,7 @@ import {
 import React, { useEffect, useState } from "react";
 import GamesGridItem from "./GamesGridItem";
 import { Game } from "@/atoms/gamesAtom";
+import Link from "next/link";
 type GamesGridListProps = {};
 
 const GamesGridList: React.FC<GamesGridListProps> = () => {
@@ -79,7 +80,15 @@ const GamesGridList: React.FC<GamesGridListProps> = () => {
         </div>
       ) : (
         <div className="flex flex-col items-center h-full justify-between mt-10">
-          <div className="flex flex-col items-center h-full justify-between gap-y-6 lg:grid lg:grid-cols-3 lg:gap-10">
+          <div className="flex w-full justify-start">
+            <Link
+              className="btn btn-ghost flex  hover:scale-105 transition-all justify-start text-4xl ml-36 mb-4"
+              href={`/games`}
+            >
+              All Games
+            </Link>
+          </div>
+          <div className="flex flex-col  h-full  gap-y-6 lg:grid lg:grid-cols-3 lg:gap-10">
             {gameStateValue.games.map((game) => (
               <GamesGridItem
                 key={game.id}
