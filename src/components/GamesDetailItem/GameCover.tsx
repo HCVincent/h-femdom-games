@@ -34,6 +34,7 @@ const GameCover: React.FC<GameCoverProps> = ({ coverImage, imagesGroup }) => {
               <Image
                 alt="cover"
                 src={coverImage ? coverImage : defaultCover}
+                priority
                 width={300}
                 height={200}
                 sizes="100vw"

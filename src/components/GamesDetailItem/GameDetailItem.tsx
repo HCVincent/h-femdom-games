@@ -8,11 +8,14 @@ import ThumbsLike from "../IndexPageContent/Recommendation/ThumbsLike";
 import useGames from "@/hooks/useGames";
 import TagsCardList from "../Tags/TagsCardList";
 import Script from "next/script";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "@/firebase/clientApp";
 
-type GameDetailItemProps = { game: Game; user: User };
+type GameDetailItemProps = { game: Game };
 
-const GameDetailItem: React.FC<GameDetailItemProps> = ({ game, user }) => {
+const GameDetailItem: React.FC<GameDetailItemProps> = ({ game }) => {
   const { gameStateValue, onVote, onCollect } = useGames();
+  const [user] = useAuthState(auth);
 
   return (
     <div className="flex flex-col  p-10">
@@ -63,7 +66,7 @@ const GameDetailItem: React.FC<GameDetailItemProps> = ({ game, user }) => {
         <Script id="window.adsbyjuicy-banner-detail">{`(AdProvider = window.AdProvider || []).push({"serve": {}});`}</Script>
       </div>
       <span className="mt-10 line">{game.body}</span>
-      <Comments game={game} user={user} />
+      {user && <Comments game={game} user={user} />}
     </div>
   );
 };
