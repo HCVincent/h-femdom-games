@@ -29,30 +29,7 @@ const Navbar: React.FC<NavbarProps> = () => {
     //@ts-ignore
     document.querySelector("html").setAttribute("data-theme", theme);
   }, [theme]);
-  // useEffect(() => {
-  //   if (user) {
-  //     setIsLogin(true);
-  //     const setDefaultLoginCookie = async () => {
-  //       await auth.currentUser
-  //         ?.getIdTokenResult()
-  //         .then((idTokenResult) => {
-  //           // Confirm the user is an Admin.
-  //           if (!!idTokenResult.claims.admin) {
-  //             // Show admin UI.
-  //             setCookie(process.env.NEXT_PUBLIC_AUTH_ADMIN!, "true");
-  //           } else {
-  //             deleteCookie(process.env.NEXT_PUBLIC_AUTH_ADMIN!);
-  //           }
-  //         })
-  //         .catch((error) => {
-  //           console.log(error);
-  //         });
-  //     };
-  //     setDefaultLoginCookie();
-  //   } else {
-  //     setIsLogin(false);
-  //   }
-  // }, [user]);
+
   return (
     <div className="navbar max-h-16 bg-base-200 justify-center p-0 z-50">
       <div className="flex w-5/6 align-middle items-center  lg:justify-between">
