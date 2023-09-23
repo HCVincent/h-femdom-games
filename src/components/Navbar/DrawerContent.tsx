@@ -11,17 +11,18 @@ import { useRecoilState } from "recoil";
 import { authModalState } from "@/atoms/authModalAtom";
 import { Game } from "@/atoms/gamesAtom";
 import logo from "../../../public/logo_icon.png";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "@/firebase/clientApp";
 type DrawerContentProps = {
   theme: string;
   toggleTheme: () => void;
-  isLogin: boolean;
 };
 
 const DrawerContent: React.FC<DrawerContentProps> = ({
   theme,
   toggleTheme,
-  isLogin,
 }) => {
+  const [user] = useAuthState(auth);
   const [isMyInputFocused, setIsMyInputFocused] = useState(false);
   const [modalState, setModalState] = useRecoilState(authModalState);
   const [results, setResults] = useState<Game[]>([]);
@@ -99,7 +100,7 @@ const DrawerContent: React.FC<DrawerContentProps> = ({
               theme={theme}
               buttonId="themeSidebar"
             />
-            {isLogin ? (
+            {user ? (
               <SignOut />
             ) : (
               <>

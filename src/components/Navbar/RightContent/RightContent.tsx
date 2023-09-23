@@ -1,4 +1,4 @@
-import { User } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
 import dynamic from "next/dynamic";
 import React, { useState } from "react";
 import SearchInput from "./SearchInput";
@@ -6,24 +6,19 @@ import { Game } from "@/atoms/gamesAtom";
 import SearchResultList from "./SearchResultList";
 import ThemeButton from "../ThemeButton/ThemeButton";
 import Avatar from "./Avatar";
+import { auth } from "@/firebase/clientApp";
 
 const AuthModal = dynamic(() => import("../../../Modal/Auth/AuthModal"), {
   ssr: false,
 });
 
 type RightContentProps = {
-  isLogin: boolean;
   toggleTheme: () => void;
   theme: string;
-  user: User | null | undefined;
 };
 
-const RightContent: React.FC<RightContentProps> = ({
-  isLogin,
-  toggleTheme,
-  theme,
-  user,
-}) => {
+const RightContent: React.FC<RightContentProps> = ({ toggleTheme, theme }) => {
+  const [user] = useAuthState(auth);
   const [results, setResults] = useState<Game[]>([]);
   const [isMyInputFocused, setIsMyInputFocused] = useState(false);
   return (

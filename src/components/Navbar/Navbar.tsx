@@ -6,17 +6,20 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import logo from "../../../public/logo_icon.png";
-import RightContent from "./RightContent/RightContent";
+// import RightContent from "./RightContent/RightContent";
 
 type NavbarProps = {};
 const DrawerContent = dynamic(() => import("./DrawerContent"), {
   ssr: false,
 });
-
+const RightContent = dynamic(
+  () => import("../Navbar/RightContent/RightContent"),
+  {
+    ssr: false,
+  }
+);
 const Navbar: React.FC<NavbarProps> = () => {
   const router = useRouter();
-  const [user] = useAuthState(auth);
-  const [isLogin, setIsLogin] = useState(false);
   const [theme, setTheme] = useState("dark");
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "default" : "dark");
@@ -26,39 +29,35 @@ const Navbar: React.FC<NavbarProps> = () => {
     //@ts-ignore
     document.querySelector("html").setAttribute("data-theme", theme);
   }, [theme]);
-  useEffect(() => {
-    if (user) {
-      setIsLogin(true);
-      const setDefaultLoginCookie = async () => {
-        await auth.currentUser
-          ?.getIdTokenResult()
-          .then((idTokenResult) => {
-            // Confirm the user is an Admin.
-            if (!!idTokenResult.claims.admin) {
-              // Show admin UI.
-              setCookie(process.env.NEXT_PUBLIC_AUTH_ADMIN!, "true");
-            } else {
-              deleteCookie(process.env.NEXT_PUBLIC_AUTH_ADMIN!);
-            }
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      };
-      setDefaultLoginCookie();
-    } else {
-      setIsLogin(false);
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   if (user) {
+  //     setIsLogin(true);
+  //     const setDefaultLoginCookie = async () => {
+  //       await auth.currentUser
+  //         ?.getIdTokenResult()
+  //         .then((idTokenResult) => {
+  //           // Confirm the user is an Admin.
+  //           if (!!idTokenResult.claims.admin) {
+  //             // Show admin UI.
+  //             setCookie(process.env.NEXT_PUBLIC_AUTH_ADMIN!, "true");
+  //           } else {
+  //             deleteCookie(process.env.NEXT_PUBLIC_AUTH_ADMIN!);
+  //           }
+  //         })
+  //         .catch((error) => {
+  //           console.log(error);
+  //         });
+  //     };
+  //     setDefaultLoginCookie();
+  //   } else {
+  //     setIsLogin(false);
+  //   }
+  // }, [user]);
   return (
     <div className="navbar max-h-16 bg-base-200 justify-center p-0 z-50">
       <div className="flex w-5/6 align-middle items-center  lg:justify-between">
         <div className="">
-          <DrawerContent
-            isLogin={isLogin}
-            theme={theme}
-            toggleTheme={toggleTheme}
-          />
+          <DrawerContent theme={theme} toggleTheme={toggleTheme} />
           <button
             className="hidden lg:flex lg:text-4xl  btn btn-ghost"
             onClick={() => router.push("/")}
@@ -71,12 +70,7 @@ const Navbar: React.FC<NavbarProps> = () => {
         </div>
 
         <div className="">
-          <RightContent
-            user={user}
-            isLogin={isLogin}
-            toggleTheme={toggleTheme}
-            theme={theme}
-          />
+          <RightContent toggleTheme={toggleTheme} theme={theme} />
         </div>
       </div>
     </div>
