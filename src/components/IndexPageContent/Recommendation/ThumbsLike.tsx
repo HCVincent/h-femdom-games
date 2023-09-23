@@ -8,25 +8,14 @@ type ThumbsLikeProps = {
   userVoteValue?: number;
   userCollectionValue?: string;
   game: Game;
-  onCollect: (
-    event: React.MouseEvent<SVGElement, MouseEvent>,
-    post: Game
-  ) => Promise<boolean>;
-  onVote: (
-    event: React.MouseEvent<SVGElement, MouseEvent>,
-    post: Game,
-    vote: number
-  ) => Promise<boolean>;
 };
 
 const ThumbsLike: React.FC<ThumbsLikeProps> = ({
   userVoteValue,
   game,
   userCollectionValue,
-  onCollect,
-  onVote,
 }) => {
-  const { onSelectDownload } = useGames();
+  const { onSelectDownload, onVote, onCollect } = useGames();
   const [error, setError] = useState(false);
   const [loadingDownVote, setLoadingDownVote] = useState(false);
   const [loadingUpVote, setLoadingUpVote] = useState(false);

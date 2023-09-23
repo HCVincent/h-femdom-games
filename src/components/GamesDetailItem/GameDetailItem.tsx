@@ -1,8 +1,6 @@
-import { Game } from "@/atoms/gamesAtom";
+import { Game, gameState } from "@/atoms/gamesAtom";
 import React, { useEffect } from "react";
-import GameCover from "./GameCover";
 import moment from "moment";
-import { User } from "firebase/auth";
 import Comments from "./Comments/Comments";
 import ThumbsLike from "../IndexPageContent/Recommendation/ThumbsLike";
 import useGames from "@/hooks/useGames";
@@ -10,11 +8,15 @@ import TagsCardList from "../Tags/TagsCardList";
 import Script from "next/script";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/firebase/clientApp";
+import dynamic from "next/dynamic";
+import { useRecoilValue } from "recoil";
 
 type GameDetailItemProps = { game: Game };
-
+const GameCover = dynamic(() => import("./GameCover"), {
+  ssr: false,
+});
 const GameDetailItem: React.FC<GameDetailItemProps> = ({ game }) => {
-  const { gameStateValue, onVote, onCollect } = useGames();
+  const gameStateValue = useRecoilValue(gameState);
   const [user] = useAuthState(auth);
 
   return (
@@ -36,8 +38,6 @@ const GameDetailItem: React.FC<GameDetailItemProps> = ({ game }) => {
                 (collection) => collection.gameId === game.id
               )?.gameId
             }
-            onCollect={onCollect}
-            onVote={onVote}
           />
         </div>
       </div>

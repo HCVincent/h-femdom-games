@@ -1,10 +1,12 @@
 import React, { useState, useCallback, useEffect } from "react";
 import useEmblaCarousel, { EmblaOptionsType } from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-import { Game } from "@/atoms/gamesAtom";
+import { Game, gameState } from "@/atoms/gamesAtom";
 import RecommendationItem from "./RecommendationItem";
 import useGames from "@/hooks/useGames";
 import { Thumb } from "./EmblaCarouselThumbsButton";
+import router from "next/router";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 
 type PropType = {
   slides: Game[];
@@ -12,7 +14,18 @@ type PropType = {
 };
 
 const EmblaCarousel: React.FC<PropType> = (props) => {
-  const { onSelectGame, gameStateValue, onVote, onCollect } = useGames();
+  const gameStateValue = useRecoilValue(gameState);
+  const setGameStateValue = useSetRecoilState(gameState);
+  const onSelectGame = (game: Game, parameter?: string) => {
+    setGameStateValue((prev) => ({
+      ...prev,
+      selectedGame: game,
+    }));
+    if (parameter !== "admin") {
+      router.push(`/games/${game.id}`);
+      // window.open(`/games/${game.id}`, "_blank");
+    }
+  };
   const { slides, options } = props;
   const [emblaMainRef, emblaMainApi] = useEmblaCarousel(options, [
     Autoplay({ stopOnInteraction: false }),
@@ -54,8 +67,6 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                 game={game}
                 index={index}
                 onSelectGame={onSelectGame}
-                onVote={onVote}
-                onCollect={onCollect}
                 userVoteValue={
                   gameStateValue.gameVotes.find(
                     (vote) => vote.gameId === game.id

@@ -1,11 +1,9 @@
-import GamesGridList from "@/components/GamesLists/GamesGridList/GamesGridList";
 import RecommendationLists from "@/components/IndexPageContent/Recommendation/RecommendationLists";
 import TagsCategories from "@/components/IndexPageContent/TagsCategories.tsx/TagsCategories";
 //@ts-ignore
-import { Game } from "@/atoms/gamesAtom";
+import { Game, gameState } from "@/atoms/gamesAtom";
 import FullPage from "@/components/Ads/FullPage";
 import { firestore } from "@/firebase/clientApp";
-import useGames from "@/hooks/useGames";
 import {
   DocumentData,
   QueryDocumentSnapshot,
@@ -20,11 +18,14 @@ import dynamic from "next/dynamic";
 import React, { useEffect } from "react";
 // @ts-ignore
 import safeJsonStringify from "safe-json-stringify";
+import { useSetRecoilState } from "recoil";
 
 const BannerUnderTags = dynamic(
   () => import("@/components/Ads/BannerUnderTags")
 );
-
+const GamesGridList = dynamic(
+  () => import("../components/GamesLists/GamesGridList/GamesGridList")
+);
 type RecommendationListsProps = {
   recommendations: Game[];
   documentSnapShot: QueryDocumentSnapshot<DocumentData>;
@@ -35,28 +36,21 @@ const Home: React.FC<RecommendationListsProps> = ({
   documentSnapShot,
   games,
 }) => {
-  const { setGameStateValue, setLastVisible } = useGames();
+  const setGameStateValue = useSetRecoilState(gameState);
   useEffect(() => {
     setGameStateValue((prev) => ({
       ...prev,
       gameRecommendations: recommendations as Game[],
     }));
   }, [recommendations]);
-  useEffect(() => {
-    setGameStateValue((prev) => ({
-      ...prev,
-      games: games as Game[],
-    }));
-    setLastVisible(documentSnapShot);
-  }, [games]);
 
   return (
     <div className="flex flex-col w-full items-center mt-5">
       <div className="flex flex-col w-full justify-center  lg:w-5/6">
         <RecommendationLists />
-        <TagsCategories />
+        {/* <TagsCategories /> */}
         <BannerUnderTags />
-        <GamesGridList />
+        <GamesGridList games={games} documentSnapShot={documentSnapShot} />
       </div>
       <FullPage />
       {/* <PopUnder /> */}

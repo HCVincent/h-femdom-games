@@ -3,6 +3,7 @@ import useGames from "@/hooks/useGames";
 import {
   DocumentData,
   Query,
+  QueryDocumentSnapshot,
   collection,
   getDocs,
   limit,
@@ -14,9 +15,15 @@ import React, { useEffect, useState } from "react";
 import GamesGridItem from "./GamesGridItem";
 import { Game } from "@/atoms/gamesAtom";
 import Link from "next/link";
-type GamesGridListProps = {};
+type GamesGridListProps = {
+  games: Game[];
+  documentSnapShot: QueryDocumentSnapshot<DocumentData>;
+};
 
-const GamesGridList: React.FC<GamesGridListProps> = () => {
+const GamesGridList: React.FC<GamesGridListProps> = ({
+  games,
+  documentSnapShot,
+}) => {
   let next: Query<DocumentData>;
   const {
     lastVisible,
@@ -28,7 +35,7 @@ const GamesGridList: React.FC<GamesGridListProps> = () => {
   const [noMoreLoad, setNoMoreLoad] = useState(false);
   const [loadMoreLoading, setLoadMoreLoading] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { gameStateValue, onVote, onCollect, onSelectGame } = useGames();
+  const { gameStateValue, onSelectGame } = useGames();
   const handleOnReadGames = async () => {
     setLoading(true);
     try {
@@ -71,7 +78,13 @@ const GamesGridList: React.FC<GamesGridListProps> = () => {
   useEffect(() => {
     handleOnReadGames();
   }, []);
-
+  useEffect(() => {
+    setGameStateValue((prev) => ({
+      ...prev,
+      games: games as Game[],
+    }));
+    setLastVisible(documentSnapShot);
+  }, [games]);
   return (
     <>
       {loading ? (
@@ -103,8 +116,6 @@ const GamesGridList: React.FC<GamesGridListProps> = () => {
                     (vote) => vote.gameId === game.id
                   )?.voteValue
                 }
-                onVote={onVote}
-                onCollect={onCollect}
                 onSelectGame={onSelectGame}
               />
               //   onClick={() => {

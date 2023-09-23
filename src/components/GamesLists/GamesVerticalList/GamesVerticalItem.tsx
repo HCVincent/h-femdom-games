@@ -13,24 +13,14 @@ type GamesVerticalItemProps = {
   game: Game;
   userVoteValue?: number;
   userCollectionValue?: string;
-  onCollect: (
-    event: React.MouseEvent<SVGElement, MouseEvent>,
-    post: Game
-  ) => Promise<boolean>;
+
   onSelectGame: (game: Game) => void;
-  onVote: (
-    event: React.MouseEvent<SVGElement, MouseEvent>,
-    post: Game,
-    vote: number
-  ) => Promise<boolean>;
 };
 
 const GamesVerticalItem: React.FC<GamesVerticalItemProps> = ({
   game,
   userCollectionValue,
-  onCollect,
   onSelectGame,
-  onVote,
   userVoteValue,
 }) => {
   const [imageLoading, setImageLoading] = useState(true);
@@ -79,8 +69,6 @@ const GamesVerticalItem: React.FC<GamesVerticalItemProps> = ({
               userVoteValue={userVoteValue}
               game={game}
               userCollectionValue={userCollectionValue}
-              onCollect={onCollect}
-              onVote={onVote}
             />
           </div>
         </div>

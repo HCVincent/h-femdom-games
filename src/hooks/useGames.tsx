@@ -42,7 +42,7 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 
 const useGames = () => {
   const router = useRouter();
-  const numOfGamesPerPage = 8;
+  const numOfGamesPerPage = 9;
   const [user] = useAuthState(auth);
   const setAuthModalState = useSetRecoilState(authModalState);
   const [lastVisible, setLastVisible] =

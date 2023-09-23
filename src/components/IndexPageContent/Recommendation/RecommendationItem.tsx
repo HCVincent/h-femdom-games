@@ -2,33 +2,23 @@ import { Game, gameState } from "@/atoms/gamesAtom";
 import moment from "moment";
 import Image from "next/image";
 import React from "react";
-import ThumbsLike from "./ThumbsLike";
 import default_cover from "../../../../public/default_cover.png";
 import Link from "next/link";
 import { useSetRecoilState } from "recoil";
+import useGames from "@/hooks/useGames";
+import dynamic from "next/dynamic";
 type RecommendationItemProps = {
   game: Game;
   index: number;
   onSelectGame: (game: Game) => void;
-  onVote: (
-    event: React.MouseEvent<SVGElement, MouseEvent>,
-    post: Game,
-    vote: number
-  ) => Promise<boolean>;
-  onCollect: (
-    event: React.MouseEvent<SVGElement, MouseEvent>,
-    post: Game
-  ) => Promise<boolean>;
+
   userVoteValue?: number;
   userCollectionValue?: string;
 };
-
+const ThumbsLike = dynamic(() => import("./ThumbsLike"));
 const RecommendationItem: React.FC<RecommendationItemProps> = ({
   game,
   index,
-  onSelectGame,
-  onVote,
-  onCollect,
   userVoteValue,
   userCollectionValue,
 }) => {
@@ -82,8 +72,6 @@ const RecommendationItem: React.FC<RecommendationItemProps> = ({
             userVoteValue={userVoteValue}
             game={game}
             userCollectionValue={userCollectionValue}
-            onCollect={onCollect}
-            onVote={onVote}
           />
         </div>
       </div>

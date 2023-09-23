@@ -9,7 +9,7 @@ type GamesVerticalListProps = {
 };
 
 const GamesVerticalList: React.FC<GamesVerticalListProps> = ({ games }) => {
-  const { gameStateValue, onCollect, onSelectGame, onVote } = useGames();
+  const { gameStateValue, onSelectGame } = useGames();
   return (
     <div className="flex flex-col w-full">
       {games &&
@@ -26,9 +26,7 @@ const GamesVerticalList: React.FC<GamesVerticalListProps> = ({ games }) => {
               gameStateValue.gameVotes.find((vote) => vote.gameId === item.id)
                 ?.voteValue
             }
-            onCollect={onCollect}
             onSelectGame={onSelectGame}
-            onVote={onVote}
           />
           //   onClick={() => {
           //     router.push(`/games/${item.id}`);

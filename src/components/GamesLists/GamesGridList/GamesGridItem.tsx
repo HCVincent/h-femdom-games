@@ -10,26 +10,16 @@ import { useSetRecoilState } from "recoil";
 type GamesGridItemProps = {
   game: Game;
   userCollectionValue?: string;
-  onCollect: (
-    event: React.MouseEvent<SVGElement, MouseEvent>,
-    post: Game
-  ) => Promise<boolean>;
+
   onSelectGame: (game: Game) => void;
   userVoteValue?: number;
-  onVote: (
-    event: React.MouseEvent<SVGElement, MouseEvent>,
-    post: Game,
-    vote: number
-  ) => Promise<boolean>;
 };
 
 const GamesGridItem: React.FC<GamesGridItemProps> = ({
   game,
   userCollectionValue,
-  onCollect,
   onSelectGame,
   userVoteValue,
-  onVote,
 }) => {
   const [imageLoading, setImageLoading] = useState(true);
   const setGameStateValue = useSetRecoilState(gameState);
@@ -80,8 +70,6 @@ const GamesGridItem: React.FC<GamesGridItemProps> = ({
               userVoteValue={userVoteValue}
               game={game}
               userCollectionValue={userCollectionValue}
-              onCollect={onCollect}
-              onVote={onVote}
             />
           </div>
         </div>
