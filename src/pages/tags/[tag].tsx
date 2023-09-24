@@ -40,11 +40,9 @@ const TagPage: React.FC<TagPageProps> = ({
   const [loading, setLoading] = useState(false);
 
   const loadMore = async () => {
-    console.log("before gameStateValue", gameStateValue.gamesInTag);
     setLoadMoreLoading(true);
     // Construct a new query starting at this document,
     const limitedNumber = 9;
-    console.log("lastvisible", lastVisible);
     next = query(
       collection(firestore, "games"),
       orderBy("updatedAt", "desc"),
@@ -52,7 +50,6 @@ const TagPage: React.FC<TagPageProps> = ({
       startAfter(lastVisible),
       limit(limitedNumber)
     );
-    console.log("next", next);
     const newGameDocs = await getDocs(next);
     if (newGameDocs.docs.length < limitedNumber) {
       setNoMoreLoad(true);
@@ -61,7 +58,6 @@ const TagPage: React.FC<TagPageProps> = ({
       id: doc.id,
       ...doc.data(),
     })) as Game[];
-    console.log("games", games);
     if (games.length < 9) {
       setNoMoreLoad(true);
     } else {
@@ -72,7 +68,6 @@ const TagPage: React.FC<TagPageProps> = ({
       ...prev,
       gamesInTag: [...prev.gamesInTag, ...games], // Update the line to spread the games array
     }));
-    console.log("before gameStateValue", gameStateValue.gamesInTag);
     setLoadMoreLoading(false);
   };
 

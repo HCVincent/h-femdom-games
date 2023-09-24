@@ -1,12 +1,11 @@
 import { Game, gameState } from "@/atoms/gamesAtom";
-import moment from "moment";
 import Image from "next/image";
 import React from "react";
 import default_cover from "../../../../public/default_cover.png";
 import Link from "next/link";
 import { useSetRecoilState } from "recoil";
-import useGames from "@/hooks/useGames";
 import dynamic from "next/dynamic";
+const MomentSpan = dynamic(() => import("@/components/MomentSpan/MomentSpan"));
 type RecommendationItemProps = {
   game: Game;
   index: number;
@@ -61,11 +60,7 @@ const RecommendationItem: React.FC<RecommendationItemProps> = ({
           <span className="text-2xl  text-white  line-clamp-2 lg:line-clamp-1 lg:text-4xl capitalize">
             {game.title}
           </span>
-          <span className="ml-2 text-slate-500 hidden lg:flex">
-            updated at{" "}
-            {game.createdAt &&
-              moment(new Date(game.createdAt.seconds * 1000)).fromNow()}
-          </span>
+          <MomentSpan timeStamp={game.updatedAt} />
         </div>
         <div className="flex-col flex-0 min-w-[20rem] hidden lg:flex">
           <ThumbsLike

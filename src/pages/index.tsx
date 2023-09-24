@@ -1,5 +1,4 @@
 import RecommendationLists from "@/components/IndexPageContent/Recommendation/RecommendationLists";
-import TagsCategories from "@/components/IndexPageContent/TagsCategories.tsx/TagsCategories";
 //@ts-ignore
 import { Game, gameState } from "@/atoms/gamesAtom";
 import FullPage from "@/components/Ads/FullPage";
@@ -26,6 +25,10 @@ const BannerUnderTags = dynamic(
 const GamesGridList = dynamic(
   () => import("../components/GamesLists/GamesGridList/GamesGridList")
 );
+const TagsCategories = dynamic(
+  () =>
+    import("@/components/IndexPageContent/TagsCategories.tsx/TagsCategories")
+);
 type RecommendationListsProps = {
   recommendations: Game[];
   documentSnapShot: QueryDocumentSnapshot<DocumentData>;
@@ -48,7 +51,7 @@ const Home: React.FC<RecommendationListsProps> = ({
     <div className="flex flex-col w-full items-center mt-5">
       <div className="flex flex-col w-full justify-center  lg:w-5/6">
         <RecommendationLists />
-        {/* <TagsCategories /> */}
+        <TagsCategories />
         <BannerUnderTags />
         <GamesGridList games={games} documentSnapShot={documentSnapShot} />
       </div>

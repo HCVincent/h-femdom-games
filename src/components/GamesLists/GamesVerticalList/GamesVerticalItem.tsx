@@ -1,14 +1,13 @@
 import { Game, gameState } from "@/atoms/gamesAtom";
-import moment from "moment";
-import React, { useState } from "react";
-import questionmark from "../../../../public/questionmark.png";
-import Image from "next/image";
-import { FaRegHeart, FaHeart } from "react-icons/fa";
 import ThumbsLike from "@/components/IndexPageContent/Recommendation/ThumbsLike";
-import Link from "next/link";
-import { useSetRecoilState } from "recoil";
 import TagsCardList from "@/components/Tags/TagsCardList";
-
+import dynamic from "next/dynamic";
+import Image from "next/image";
+import Link from "next/link";
+import React, { useState } from "react";
+import { useSetRecoilState } from "recoil";
+import questionmark from "../../../../public/questionmark.png";
+const MomentSpan = dynamic(() => import("@/components/MomentSpan/MomentSpan"));
 type GamesVerticalItemProps = {
   game: Game;
   userVoteValue?: number;
@@ -58,12 +57,7 @@ const GamesVerticalItem: React.FC<GamesVerticalItemProps> = ({
         {game.tags && <TagsCardList tags={game.tags} />}
         <div className="card-body cursor-pointer flex flex-1">
           <h2 className="card-title capitalize">{game.title}</h2>
-          <p>
-            {game.createdAt &&
-              `updated at ${moment(
-                new Date(game.createdAt.seconds * 1000)
-              ).fromNow()}`}
-          </p>
+          <MomentSpan timeStamp={game.updatedAt} />
           <div className="card-actions justify-end">
             <ThumbsLike
               userVoteValue={userVoteValue}

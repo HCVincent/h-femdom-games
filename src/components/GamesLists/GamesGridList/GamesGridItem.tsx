@@ -7,18 +7,17 @@ import Link from "next/link";
 import TagsCardList from "@/components/Tags/TagsCardList";
 import Image from "next/image";
 import { useSetRecoilState } from "recoil";
+import dynamic from "next/dynamic";
+const MomentSpan = dynamic(() => import("@/components/MomentSpan/MomentSpan"));
 type GamesGridItemProps = {
   game: Game;
   userCollectionValue?: string;
-
-  onSelectGame: (game: Game) => void;
   userVoteValue?: number;
 };
 
 const GamesGridItem: React.FC<GamesGridItemProps> = ({
   game,
   userCollectionValue,
-  onSelectGame,
   userVoteValue,
 }) => {
   const [imageLoading, setImageLoading] = useState(true);
@@ -55,12 +54,7 @@ const GamesGridItem: React.FC<GamesGridItemProps> = ({
             <h2 className="card-title  text-xl justify-start top-0 align-top items-start capitalize line-clamp-2">
               {game.title}
             </h2>
-            <span className="flex text-slate-500 text-sm">
-              {game.updatedAt &&
-                `updated at ${moment(
-                  new Date(game.updatedAt.seconds * 1000)
-                ).fromNow()}`}
-            </span>
+            <MomentSpan timeStamp={game.updatedAt} />
 
             <div className="flex flex-1">
               {game.tags && <TagsCardList tags={game.tags} />}

@@ -1,16 +1,14 @@
-import { Game } from "@/atoms/gamesAtom";
+import { Game, gameState } from "@/atoms/gamesAtom";
 import GamesVerticalList from "@/components/GamesLists/GamesVerticalList/GamesVerticalList";
 import PageContent from "@/components/Layout/PageContent";
-import RelatedGames from "@/components/RelatedGames/RelatedGames";
 import { auth, firestore } from "@/firebase/clientApp";
-import useGames from "@/hooks/useGames";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { GetServerSidePropsContext } from "next";
-import { useRouter } from "next/router";
-import React, { Suspense, lazy, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Image from "next/image";
 import girls1 from "../../../../public/girls/1.png";
+import { useRecoilValue } from "recoil";
 
 type CollectionsProps = {
   uid: string;
@@ -18,16 +16,13 @@ type CollectionsProps = {
 const CollectionPage: React.FC<CollectionsProps> = ({ uid }) => {
   const [collections, setCollections] = useState<Game[]>([]);
   const [userMatch, setUserMatch] = useState(false);
-  const [randomGame, setRandomGame] = useState<Game>();
+  const gameStateValue = useRecoilValue(gameState);
   const [user] = useAuthState(auth);
-  const { gameStateValue } = useGames();
   const gamesRef = collection(firestore, "games");
   let array: string[] = [];
   gameStateValue.gameCollections.map((item, i) => {
     array[i] = item.gameId;
   });
-
-  // modify here, it is supposed to query each id in array
 
   useEffect(() => {
     const getCollections = async () => {
@@ -45,19 +40,7 @@ const CollectionPage: React.FC<CollectionsProps> = ({ uid }) => {
       }
     };
 
-    const getRandomGame = async (collections: Game[]) => {
-      if (collections && collections.length > 0) {
-        const game =
-          collections[Math.floor(Math.random() * collections.length)];
-        if (game.tags && game.tags.length > 0) {
-          setRandomGame(game);
-        } else {
-          getRandomGame(collections);
-        }
-      }
-    };
     getCollections();
-    getRandomGame(collections);
   }, [gameStateValue.gameCollections, user]);
   return (
     <div className="flex w-full  justify-center ">

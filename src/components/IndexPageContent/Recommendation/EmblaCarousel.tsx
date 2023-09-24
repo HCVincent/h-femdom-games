@@ -3,7 +3,6 @@ import useEmblaCarousel, { EmblaOptionsType } from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { Game, gameState } from "@/atoms/gamesAtom";
 import RecommendationItem from "./RecommendationItem";
-import useGames from "@/hooks/useGames";
 import { Thumb } from "./EmblaCarouselThumbsButton";
 import router from "next/router";
 import { useRecoilValue, useSetRecoilState } from "recoil";
@@ -60,8 +59,8 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
     <div className="embla hover:scale-105 transition-all">
       <div className="embla__viewport" ref={emblaMainRef}>
         <div className="embla__container  h-[540px]">
-          {slides &&
-            slides.map((game, index) => (
+          {gameStateValue.gameRecommendations &&
+            gameStateValue.gameRecommendations.map((game, index) => (
               <RecommendationItem
                 key={game.id}
                 game={game}
@@ -83,8 +82,8 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
         <div className="embla-thumbs flex h-20 lg:h-30 w-full">
           <div className="embla-thumbs__viewport w-full" ref={emblaThumbsRef}>
             <div className="embla-thumbs__container flex w-full">
-              {slides &&
-                slides.map((game, index) => (
+              {gameStateValue.gameRecommendations &&
+                gameStateValue.gameRecommendations.map((game, index) => (
                   <Thumb
                     onClick={() => onThumbClick(index)}
                     selected={index === selectedIndex}

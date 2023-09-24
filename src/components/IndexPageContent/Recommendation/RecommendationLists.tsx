@@ -9,14 +9,9 @@ type RecommendationListsProps = {};
 const OPTIONS: EmblaOptionsType = { loop: true };
 
 const RecommendationLists: React.FC<RecommendationListsProps> = () => {
-  const gameStateValue = useRecoilValue(gameState);
-
   return (
     <section className="sandbox__carousel mt-10">
-      <EmblaCarousel
-        slides={gameStateValue.gameRecommendations}
-        options={OPTIONS}
-      />
+      <EmblaCarousel slides={[]} options={OPTIONS} />
     </section>
   );
 };

@@ -116,7 +116,6 @@ const GamesGridList: React.FC<GamesGridListProps> = ({
                     (vote) => vote.gameId === game.id
                   )?.voteValue
                 }
-                onSelectGame={onSelectGame}
               />
               //   onClick={() => {
               //     router.push(`/games/${item.id}`);
