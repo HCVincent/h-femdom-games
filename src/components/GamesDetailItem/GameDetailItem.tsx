@@ -1,9 +1,8 @@
 import { Game, gameState } from "@/atoms/gamesAtom";
-import React, { useEffect } from "react";
+import React from "react";
 import moment from "moment";
 import Comments from "./Comments/Comments";
 import ThumbsLike from "../IndexPageContent/Recommendation/ThumbsLike";
-import useGames from "@/hooks/useGames";
 import TagsCardList from "../Tags/TagsCardList";
 import Script from "next/script";
 import { useAuthState } from "react-firebase-hooks/auth";

@@ -20,6 +20,7 @@ const ThemeButton: React.FC<ThemeButtonProps> = ({
           type="checkbox"
           checked={theme !== "dark"}
           onChange={toggleTheme}
+          aria-label="theme button"
         />
 
         {/* sun icon */}

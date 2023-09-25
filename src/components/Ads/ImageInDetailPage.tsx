@@ -8,7 +8,6 @@ const ImageInDetailPage: React.FC<ImageInDetailPageProps> = () => {
     <div className="relative h-[50rem] w-full z-10 top-0">
       <Image
         alt=""
-        priority
         src={girls1}
         width={500}
         height={500}
