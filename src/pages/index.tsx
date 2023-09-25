@@ -31,14 +31,8 @@ const TagsCategories = dynamic(
 );
 type RecommendationListsProps = {
   recommendations: Game[];
-  documentSnapShot: QueryDocumentSnapshot<DocumentData>;
-  games: Game[];
 };
-const Home: React.FC<RecommendationListsProps> = ({
-  recommendations,
-  documentSnapShot,
-  games,
-}) => {
+const Home: React.FC<RecommendationListsProps> = ({ recommendations }) => {
   const setGameStateValue = useSetRecoilState(gameState);
   useEffect(() => {
     setGameStateValue((prev) => ({
@@ -53,7 +47,7 @@ const Home: React.FC<RecommendationListsProps> = ({
         <RecommendationLists />
         <TagsCategories />
         <BannerUnderTags />
-        <GamesGridList games={games} documentSnapShot={documentSnapShot} />
+        <GamesGridList />
       </div>
       <FullPage />
       {/* <PopUnder /> */}
@@ -79,19 +73,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       ...doc.data(),
     }));
 
-    const gameQuery = query(
-      collection(firestore, "games"),
-      orderBy("updatedAt", "desc"),
-      limit(9)
-    );
-    const gameDocs = await getDocs(gameQuery);
-    const documentSnapShot = gameDocs.docs[gameDocs.docs.length - 1];
-    const games = gameDocs.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
     return {
       props: {
         recommendations: JSON.parse(safeJsonStringify(recommendations)),
-        documentSnapShot: JSON.parse(safeJsonStringify(documentSnapShot)),
-        games: JSON.parse(safeJsonStringify(games)),
       },
     };
   } catch (error) {

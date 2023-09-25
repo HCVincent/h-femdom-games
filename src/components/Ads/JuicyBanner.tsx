@@ -6,6 +6,12 @@ type JuicyBannerProps = {};
 const JuicyBanner: React.FC<JuicyBannerProps> = () => {
   useEffect(() => {
     const juicyAdsBanner = document.getElementById("window.adsbyjuicy-banner");
+    const ads1033717 = document.getElementById("1033717");
+    if (ads1033717) {
+      ads1033717.addEventListener("touchstart", (event: TouchEvent) => {}, {
+        passive: true,
+      });
+    }
     if (juicyAdsBanner) {
       juicyAdsBanner.addEventListener("touchstart", (event: TouchEvent) => {}, {
         passive: true,

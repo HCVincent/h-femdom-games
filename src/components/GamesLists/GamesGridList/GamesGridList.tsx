@@ -13,17 +13,12 @@ import {
 } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import GamesGridItem from "./GamesGridItem";
-import { Game } from "@/atoms/gamesAtom";
+import { Game, gameState } from "@/atoms/gamesAtom";
 import Link from "next/link";
-type GamesGridListProps = {
-  games: Game[];
-  documentSnapShot: QueryDocumentSnapshot<DocumentData>;
-};
+import { useRecoilValue } from "recoil";
+type GamesGridListProps = {};
 
-const GamesGridList: React.FC<GamesGridListProps> = ({
-  games,
-  documentSnapShot,
-}) => {
+const GamesGridList: React.FC<GamesGridListProps> = ({}) => {
   let next: Query<DocumentData>;
   const {
     lastVisible,
@@ -35,7 +30,7 @@ const GamesGridList: React.FC<GamesGridListProps> = ({
   const [noMoreLoad, setNoMoreLoad] = useState(false);
   const [loadMoreLoading, setLoadMoreLoading] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { gameStateValue, onSelectGame } = useGames();
+  const gameStateValue = useRecoilValue(gameState);
   const handleOnReadGames = async () => {
     setLoading(true);
     try {
@@ -79,12 +74,23 @@ const GamesGridList: React.FC<GamesGridListProps> = ({
     handleOnReadGames();
   }, []);
   useEffect(() => {
-    setGameStateValue((prev) => ({
-      ...prev,
-      games: games as Game[],
-    }));
-    setLastVisible(documentSnapShot);
-  }, [games]);
+    const fetchGames = async () => {
+      const gameQuery = query(
+        collection(firestore, "games"),
+        orderBy("updatedAt", "desc"),
+        limit(9)
+      );
+      const gameDocs = await getDocs(gameQuery);
+      const documentSnapShot = gameDocs.docs[gameDocs.docs.length - 1];
+      const games = gameDocs.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      setGameStateValue((prev) => ({
+        ...prev,
+        games: games as Game[],
+      }));
+      setLastVisible(documentSnapShot);
+    };
+    fetchGames();
+  }, []);
   return (
     <>
       {loading ? (
