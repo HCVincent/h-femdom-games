@@ -1,4 +1,3 @@
-import RecommendationLists from "@/components/IndexPageContent/Recommendation/RecommendationLists";
 //@ts-ignore
 import { Game, gameState } from "@/atoms/gamesAtom";
 import FullPage from "@/components/Ads/FullPage";
@@ -18,7 +17,10 @@ import React, { useEffect } from "react";
 // @ts-ignore
 import safeJsonStringify from "safe-json-stringify";
 import { useSetRecoilState } from "recoil";
-
+const RecommendationLists = dynamic(
+  () =>
+    import("@/components/IndexPageContent/Recommendation/RecommendationLists")
+);
 const BannerUnderTags = dynamic(
   () => import("@/components/Ads/BannerUnderTags")
 );

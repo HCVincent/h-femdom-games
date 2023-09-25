@@ -42,10 +42,15 @@ const DrawerContent: React.FC<DrawerContentProps> = ({
   };
   return (
     <div className="drawer lg:hidden">
-      <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+      <input
+        id="my-drawer"
+        type="checkbox"
+        className="drawer-toggle"
+        aria-label="Toggle Drawer"
+      />
       <div className="drawer-content">
         {/* Page content here */}
-        <label htmlFor="my-drawer" className="cursor-pointer">
+        <label htmlFor="my-drawer" className="cursor-pointer flex">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-8 w-8"
@@ -60,6 +65,7 @@ const DrawerContent: React.FC<DrawerContentProps> = ({
               d="M4 6h16M4 12h16M4 18h7"
             />
           </svg>
+          <span className="flex h-full text-2xl">Menu</span>
         </label>
       </div>
       <div className="drawer-side">
