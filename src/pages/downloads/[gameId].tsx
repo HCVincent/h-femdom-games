@@ -1,4 +1,4 @@
-import { Game } from "@/atoms/gamesAtom";
+import { Game, gameState } from "@/atoms/gamesAtom";
 import { firestore } from "@/firebase/clientApp";
 import useGames from "@/hooks/useGames";
 import { doc, getDoc } from "firebase/firestore";
@@ -6,12 +6,14 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import Script from "next/script";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 
 type DownloadPage = {};
 
 const DownloadPage: React.FC<DownloadPage> = () => {
   const router = useRouter();
-  const { gameStateValue, setGameStateValue } = useGames();
+  const gameStateValue = useRecoilValue(gameState);
+  const setGameStateValue = useSetRecoilState(gameState);
   const game: Game = gameStateValue.selectedGame!;
   const [timeLeft, setTimeLeft] = useState(5);
   const [toDownload, setToDownload] = useState(false);
